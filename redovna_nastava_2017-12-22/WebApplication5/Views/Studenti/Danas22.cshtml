@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "Danas22";
+}
+
+<link href="http://easyautocomplete.com/stylesheets/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://easyautocomplete.com/stylesheets/css/style.css" rel="stylesheet">
+<link href="http://easyautocomplete.com/stylesheets/css/sheroes.css" rel="stylesheet">
+<link href="http://easyautocomplete.com/resources/flags.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="http://easyautocomplete.com/images/favicon.png" />
+
+<link href="http://easyautocomplete.com/dist/easy-autocomplete.min.css" rel="stylesheet">
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js">
+    
+</script>
+
+<script src="http://easyautocomplete.com/dist/jquery.easy-autocomplete.min.js"></script>
+
+<body>
+<h2>Danas22</h2>
+<button id="btn1">Dugme1</button>
+<button ajaks-poziv="da" ajaks-url="/studenti/indexPartial" ajaks-rezultat="ajaxDiv">Ajax dugme za prikaz</button> <br/>
+<button ajaks-poziv="da" ajaks-url="/studenti/dodajPartial" ajaks-rezultat="ajaxDiv">Ajax dugme za novog studenta</button>
+    
+<form action="/studenti/dodaj" ajaks-poziv="da" ajaks-rezultat="ajaxDiv">
+    <input name="nesto"/>
+    <input type="submit"/>
+</form>
+    
+    
+<div id="ajaxDiv" style="border: 1px solid black"></div>
+<h2>Podnaslov</h2>
+
+<script src="JFIT.js"></script>
+    
+    
+<input id="example-mail"/>
+
+</body>
+
+<script>
+    var options = {
+        url: "/studenti/trazi",
+
+        getValue: "name",
+
+        template: {
+            type: "description",
+            fields: {
+                description: "email"
+            }
+        },
+
+        list: {
+            match: {
+                enabled: true
+            }
+        },
+
+        theme: "plate-dark"
+    };
+
+    $("#example-mail").easyAutocomplete(options);
+</script>

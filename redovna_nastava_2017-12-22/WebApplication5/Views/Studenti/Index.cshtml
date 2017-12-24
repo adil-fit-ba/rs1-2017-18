@@ -1,0 +1,127 @@
+﻿@using WebApplication5.EntityModels
+
+@{
+    ViewData["Title"] = "Index";
+
+    List<Student> podaci1= ViewData["kljuc1"] as List<Student>;
+}
+
+<h2>Index</h2>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Opstina</th>
+        <th>Akcija</th>
+    </tr>   
+    </thead>
+    <tbody>
+    @foreach (Student x in podaci1)
+    {
+        <tr>
+            <td>@x.Id</td>
+            <td>@x.Ime</td>
+            <td>@x.Prezime</td>
+            <td>@x.Opstina?.Opis</td>
+            <td>
+                <a href="/studenti/obrisi?id=@x.Id">Obrisi</a>
+                <a href="/studenti/edit?id=@x.Id">Edit</a>
+              
+            </td>
+        </tr>
+    }
+
+    </tbody>
+</table>
+
+
+
+<a href="/studenti/dodaj">Dodaj novog studenta</a>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="nesto1">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a koristi-ajax="da" akcija-url="/studenti/proba" rezultat-div="ajaxDiv">ajax link</a>
+
+<input id="provider-json" />
+<button id="idButtona">Dugme za ajax app.fit.ba</button>
+<script>
+    var options = {
+        url: "/studenti/jsongradovi",
+        getValue: "name",
+        list: {
+            match: {
+                enabled: true
+            }
+        }
+    };
+
+    $("#provider-json").easyAutocomplete(options);
+
+
+    $("#idButtona").click(function (event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: '/studenti/proba',
+            dataType: 'html',
+            type: 'get',
+            data: $(this).serialize(),
+            success: function( data, textStatus, jQxhr ){
+                $('#nesto1').html(data);
+                $('#myModal').modal('show');
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+    });
+    /*
+    contentType - When sending data to the server, use this content type.
+    dataType  -The type of data that you're expecting back from the server. If none is specified, jQuery will try to infer it based on the MIME type of the response
+    */
+
+    $("a[koristi-ajax|='da']").click(function (event) {
+        event.preventDefault();
+
+        var link = $(this).attr("akcija-url");
+        var rezultatDiv = $(this).attr("rezultat-div");
+
+        $.ajax({
+            url: link,
+            dataType: 'html',
+            type: 'get',
+            data: $(this).serialize(),
+            success: function( data, textStatus, jQxhr ){
+                $('#'+rezultatDiv).html(data);
+                $('#myModal').modal('show');
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
+            }
+        });
+    });
+
+</script>

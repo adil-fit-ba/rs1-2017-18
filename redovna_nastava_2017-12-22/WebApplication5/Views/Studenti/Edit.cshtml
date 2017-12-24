@@ -1,0 +1,17 @@
+﻿@using WebApplication5.EntityModels
+
+@{
+    ViewData["Title"] = "Dodaj";
+    Student s = ViewData["kljuc1"] as Student;
+}
+
+<h2>Dodaj</h2>
+<form action="/studenti/snimi">
+    
+    <input type="hidden" name="studentid" readonly value="@s.Id" />
+    <input type="text" name="ime" value="@s.Ime"/>
+    <input type="text" name="prezime" value="@s.Prezime"/>
+    <input type="text" name="opstinaId" value="@s.OpstinaId"/>
+    <input type="submit"/>
+
+</form>
