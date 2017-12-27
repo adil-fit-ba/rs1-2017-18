@@ -1,24 +1,20 @@
 ﻿@using WebApplication5.EntityModels
-
 @{
     ViewData["Title"] = "Dodaj";
     Student s = ViewData["kljuc1"] as Student;
 }
-
 <h2>Dodaj</h2>
 <form action="/studenti/snimi" ajax-poziv="da" ajax-rezultat="ajaxDiv">
-    
+
     <input type="hidden" name="studentid" readonly value="@s.Id" />
-    <input type="text" name="ime" value="@s.Ime"/>
-    <input type="text" name="prezime" value="@s.Prezime"/>
-    <input type="text" name="opstinaId" value="@s.OpstinaId"/>
-    <input type="submit"/>
-
+    <input type="text" name="ime" value="@s.Ime" />
+    <input type="text" name="prezime" value="@s.Prezime" />
+    <input type="text" name="opstinaId" value="@s.OpstinaId" />
+    <input type="submit" />
 </form>
-
+<a ajax-poziv="da" href="/studenti/dodaj" ajax-rezultat="ajaxDiv">ajax dodaj</a>
 
 <div id="ajaxDiv" style="border: 1px solid black">
-    
-</div>
 
+</div>
 <script src="/JFIT.js"></script>
