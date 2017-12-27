@@ -12,7 +12,12 @@ namespace WebApplication5.Controllers
 {
     public class StudentiController : Controller
     {
-        private MojContext _db = new MojContext();
+        public StudentiController(MojContext context)
+        {
+            _db = context;
+        }
+
+        private MojContext _db;
         public IActionResult Index()
         {
             List<Student> podaci1 = _db.Studenti

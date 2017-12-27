@@ -6,7 +6,7 @@
 }
 
 <h2>Dodaj</h2>
-<form action="/studenti/snimi">
+<form action="/studenti/snimi" ajax-poziv="da" ajax-rezultat="ajaxDiv">
     
     <input type="hidden" name="studentid" readonly value="@s.Id" />
     <input type="text" name="ime" value="@s.Ime"/>
@@ -15,3 +15,10 @@
     <input type="submit"/>
 
 </form>
+
+
+<div id="ajaxDiv" style="border: 1px solid black">
+    
+</div>
+
+<script src="/JFIT.js"></script>

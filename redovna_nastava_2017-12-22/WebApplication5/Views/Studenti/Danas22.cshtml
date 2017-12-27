@@ -19,11 +19,10 @@
 
 <body>
 <h2>Danas22</h2>
-<button id="btn1">Dugme1</button>
-<button ajaks-poziv="da" ajaks-url="/studenti/indexPartial" ajaks-rezultat="ajaxDiv">Ajax dugme za prikaz</button> <br/>
-<button ajaks-poziv="da" ajaks-url="/studenti/dodajPartial" ajaks-rezultat="ajaxDiv">Ajax dugme za novog studenta</button>
+<button ajax-poziv="da" ajax-url="/studenti/indexPartial" ajax-rezultat="ajaxDiv">Ajax dugme1</button> <br/>
+<button ajax-poziv="da" ajax-url="/studenti/dodajPartial" ajax-rezultat="ajaxDiv">Ajax dugme2</button>
     
-<form action="/studenti/dodaj" ajaks-poziv="da" ajaks-rezultat="ajaxDiv">
+<form action="/studenti/dodaj" ajax-poziv="da" ajax-rezultat="ajaxDiv">
     <input name="nesto"/>
     <input type="submit"/>
 </form>
@@ -32,34 +31,9 @@
 <div id="ajaxDiv" style="border: 1px solid black"></div>
 <h2>Podnaslov</h2>
 
-<script src="JFIT.js"></script>
+<script src="/JFIT.js"></script>
     
     
-<input id="example-mail"/>
 
 </body>
 
-<script>
-    var options = {
-        url: "/studenti/trazi",
-
-        getValue: "name",
-
-        template: {
-            type: "description",
-            fields: {
-                description: "email"
-            }
-        },
-
-        list: {
-            match: {
-                enabled: true
-            }
-        },
-
-        theme: "plate-dark"
-    };
-
-    $("#example-mail").easyAutocomplete(options);
-</script>

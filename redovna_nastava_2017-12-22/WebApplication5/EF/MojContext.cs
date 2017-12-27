@@ -10,13 +10,11 @@ namespace WebApplication5.EF
         {
         }
 
-        public MojContext()
-        {
-        }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-         
+           base.OnConfiguring(optionsBuilder);
         }
 
         public DbSet<Student> Studenti { get; set; }
