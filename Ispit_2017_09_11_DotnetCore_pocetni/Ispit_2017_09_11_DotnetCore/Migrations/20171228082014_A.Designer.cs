@@ -11,9 +11,10 @@ using System;
 namespace Ispit_2017_09_11_DotnetCore.Migrations
 {
     [DbContext(typeof(MojContext))]
-    partial class MojContextModelSnapshot : ModelSnapshot
+    [Migration("20171228082014_A")]
+    partial class A
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,26 +43,12 @@ namespace Ispit_2017_09_11_DotnetCore.Migrations
                     b.ToTable("DodjeljenPredmet");
                 });
 
-            modelBuilder.Entity("Ispit_2017_09_11_DotnetCore.EntityModels.Nastavnik", b =>
-                {
-                    b.Property<int>("NastavnikID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ImePrezime");
-
-                    b.HasKey("NastavnikID");
-
-                    b.ToTable("Nastavnik");
-                });
-
             modelBuilder.Entity("Ispit_2017_09_11_DotnetCore.EntityModels.Odjeljenje", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool>("IsPrebacenuViseOdjeljenje");
-
-                    b.Property<int?>("NastavnikID");
 
                     b.Property<string>("Oznaka");
 
@@ -70,8 +57,6 @@ namespace Ispit_2017_09_11_DotnetCore.Migrations
                     b.Property<string>("SkolskaGodina");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("NastavnikID");
 
                     b.ToTable("Odjeljenje");
                 });
@@ -133,13 +118,6 @@ namespace Ispit_2017_09_11_DotnetCore.Migrations
                         .WithMany()
                         .HasForeignKey("PredmetId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Ispit_2017_09_11_DotnetCore.EntityModels.Odjeljenje", b =>
-                {
-                    b.HasOne("Ispit_2017_09_11_DotnetCore.EntityModels.Nastavnik", "Nastavnik")
-                        .WithMany()
-                        .HasForeignKey("NastavnikID");
                 });
 
             modelBuilder.Entity("Ispit_2017_09_11_DotnetCore.EntityModels.OdjeljenjeStavka", b =>
