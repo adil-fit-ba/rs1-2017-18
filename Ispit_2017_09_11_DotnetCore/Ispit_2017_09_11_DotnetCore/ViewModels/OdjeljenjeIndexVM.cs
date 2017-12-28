@@ -17,7 +17,7 @@ namespace Ispit_2017_09_11_DotnetCore.ViewModels
             public string Razrednik;
             public bool Prebacen;
             public string NajboljiUcenik;
-            public float ProsjekOcjena;
+            public double ProsjekOcjena;
         }
 
         public List<Row> Rows;
