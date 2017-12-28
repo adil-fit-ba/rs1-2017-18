@@ -1,7 +1,7 @@
 ﻿@using WebApplication5.EntityModels
 @{
     ViewData["Title"] = "Dodaj";
-    Student s = ViewData["kljuc1"] as Student;
+    Student s = (Student) ViewData["kljuc1"];
 }
 <h2>Dodaj</h2>
 <form action="/studenti/snimi" ajax-poziv="da" ajax-rezultat="ajaxDiv">

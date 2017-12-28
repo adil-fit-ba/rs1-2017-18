@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ispit_2017_09_11_DotnetCore.EF;
+using Ispit_2017_09_11_DotnetCore.EntityModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebApplication5.EF;
 
-namespace WebApplication5
+namespace Ispit_2017_09_11_DotnetCore
 {
     public class Startup
     {
@@ -50,8 +51,13 @@ namespace WebApplication5
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            
+
+            
+
         }
 
-   
+       
     }
 }
