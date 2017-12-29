@@ -16,6 +16,18 @@
         <td><input type="text" value="@Model.Razred" readonly="readonly" /></td>
     </tr>
 </table>
-<div id="ajaxDiv">
+
+<a ajax-poziv='da' href="/AjaxStavke/Index?OdjeljenjeID=@Model.OdjeljenjeID" ajax-rezultat="ajaxDiv">Prikazi stavke (ajax)</a>
+
+<div id="ajaxDiv" style="border: 1px black solid">
     
 </div>
+
+<script>
+    $(document).ready(function () {
+        $.get("/AjaxStavke/Index?OdjeljenjeID=@Model.OdjeljenjeID", function (data, status) {
+            $("#ajaxDiv").html(data);
+            ajaxEventi();
+        });
+    });
+</script>

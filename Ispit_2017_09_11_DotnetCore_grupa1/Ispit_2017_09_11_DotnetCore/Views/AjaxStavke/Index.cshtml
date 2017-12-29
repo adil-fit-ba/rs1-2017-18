@@ -1,0 +1,33 @@
+﻿
+@using Ispit_2017_09_11_DotnetCore.EntityModels
+@using Ispit_2017_09_11_DotnetCore.ViewModels
+@model Ispit_2017_09_11_DotnetCore.ViewModels.StavkeIndexVM
+
+<h2>Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>BR</th>
+            <th>Ucenik</th>
+            <th>Zakljuceno</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (StavkeIndexVM.Row  x in Model.Rows)
+        {
+            <tr>
+                <td>@x.BrojUDnevniku</td>
+                <td>@x.Ucenik</td>
+                <td>@x.BrojZakljucnihOcjena</td>
+                <td>
+                    <a ajax-poziv="da" ajax-rezultat="ajaxDiv" asp-action="Obrisi" asp-route-OdjeljenjeStavkaId="@x.OdjeljenjeStavkaID">Obrisi</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
