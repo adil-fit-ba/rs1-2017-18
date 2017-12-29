@@ -3,6 +3,10 @@
     ViewData["Title"] = "Index";
 }
 
+@using Ispit_2017_09_11_DotnetCore.EntityModels
+@using Ispit_2017_09_11_DotnetCore.ViewModels
+@model Ispit_2017_09_11_DotnetCore.ViewModels.OdjeljenjeIndexVM
+
 <h2>Index</h2>
 
 <table class="table table-striped">
@@ -17,6 +21,27 @@
     </tr>
     </thead>
     <tbody>
-    
+    @foreach (OdjeljenjeIndexVM.Row x in Model.Rows)
+    {
+        <tr>
+            <td>@x.SkolskaGodina</td>
+            <td>@x.Razred</td>
+            <td>@x.Oznaka</td>
+            <td>@x.Razrednik</td>
+            <td>@(x.Prebacen?"DA":"NE") </td>
+            <td>
+                @*<a href="/Odjeljenje/Detalji?OdjeljenjeID=@x.OdjeljenjeID">Detalji</a>*@
+
+                <a asp-action="Detalji" asp-route-odjeljenjeID="@x.OdjeljenjeID">Detalji</a>
+
+                <a asp-action="Obrisi" asp-route-odjeljenjeID="@x.OdjeljenjeID">Obrisi</a>
+
+
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
+
+
+<a asp-action="Dodaj" class="btn btn-danger">Dodaj</a>

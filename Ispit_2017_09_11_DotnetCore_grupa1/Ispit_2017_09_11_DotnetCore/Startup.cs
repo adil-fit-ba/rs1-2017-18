@@ -25,7 +25,7 @@ namespace Ispit_2017_09_11_DotnetCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MojContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("lokalni1")));
+                options.UseSqlServer(Configuration.GetConnectionString("adil-pc")));
 
             services.AddMvc();
         }

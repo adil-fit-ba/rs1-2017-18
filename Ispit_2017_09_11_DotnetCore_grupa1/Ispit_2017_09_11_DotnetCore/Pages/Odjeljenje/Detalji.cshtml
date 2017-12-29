@@ -1,0 +1,21 @@
+﻿@model Ispit_2017_09_11_DotnetCore.ViewModels.OdjeljenjeDetaljiVM
+
+@{
+    ViewBag.Title = "title";
+   
+}
+
+<h2>Detalji odjeljenja</h2>
+<table>
+    <tr>
+        <td>Školska godina</td>
+        <td><input type="text" value="@Model.SkolskaGodina" readonly="readonly" /></td>
+    </tr>
+    <tr>
+        <td>Razred</td>
+        <td><input type="text" value="@Model.Razred" readonly="readonly" /></td>
+    </tr>
+</table>
+<div id="ajaxDiv">
+    
+</div>
