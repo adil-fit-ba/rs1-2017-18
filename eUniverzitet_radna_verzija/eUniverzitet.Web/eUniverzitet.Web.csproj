@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+	 <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\eUniverzitet.Data\eUniverzitet.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\ModulAdministracija\Data\" />
+    <Folder Include="Areas\ModulAdministracija\Views\" />
+    <Folder Include="Areas\ModulEdukatori\Controllers\" />
+    <Folder Include="Areas\ModulEdukatori\Data\" />
+    <Folder Include="Areas\ModulEdukatori\Models\" />
+    <Folder Include="Areas\ModulEdukatori\Views\" />
+    <Folder Include="Areas\ModulStudenti\Controllers\" />
+    <Folder Include="Areas\ModulStudenti\Data\" />
+    <Folder Include="Areas\ModulStudenti\Models\" />
+    <Folder Include="Areas\ModulStudenti\Views\" />
+    <Folder Include="Areas\ModulStudentskaSluzba\Controllers\" />
+    <Folder Include="Areas\ModulStudentskaSluzba\Data\" />
+    <Folder Include="Areas\ModulStudentskaSluzba\Models\" />
+    <Folder Include="Areas\ModulStudentskaSluzba\Views\" />
+    <Folder Include="Areas\ModulSuperAdmin\Controllers\" />
+    <Folder Include="Areas\ModulSuperAdmin\Data\" />
+    <Folder Include="Areas\ModulSuperAdmin\Models\" />
+    <Folder Include="Areas\ModulSuperAdmin\Views\" />
+    <Folder Include="Areas\ModulZaposlenik\Controllers\" />
+    <Folder Include="Areas\ModulZaposlenik\Data\" />
+    <Folder Include="Areas\ModulZaposlenik\Models\" />
+    <Folder Include="Areas\ModulZaposlenik\Views\" />
+  </ItemGroup>
+
+</Project>
