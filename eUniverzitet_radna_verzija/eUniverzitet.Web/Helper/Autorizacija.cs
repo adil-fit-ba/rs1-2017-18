@@ -12,9 +12,8 @@ namespace eUniverzitet.Web.Helper
 {
     public class Autorizacija : ActionFilterAttribute
     {
+       
         public KorisnickaUloga[] _uloga { get; set; }
-
-    
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {

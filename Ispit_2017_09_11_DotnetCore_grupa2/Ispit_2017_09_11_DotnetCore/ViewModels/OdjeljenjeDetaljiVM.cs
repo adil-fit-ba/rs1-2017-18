@@ -10,15 +10,6 @@ namespace Ispit_2017_09_11_DotnetCore.ViewModels
 {
     public class OdjeljenjeDetaljiVM
     {
-        public OdjeljenjeDetaljiVM(Odjeljenje x, MojContext mojContext)
-        {
-            OdjeljenjeID = x.Id;
-            SkolskaGodina= x.SkolskaGodina;
-            Razred= x.Razred;
-            Oznaka= x.Oznaka;
-            Razrednik= x.Nastavnik.ImePrezime;
-            BrojPredmeta = mojContext.Predmet.Where(a => a.Razred == x.Razred).Count();
-        }
 
         public int OdjeljenjeID { get; set; }
         public string SkolskaGodina { get; set; }

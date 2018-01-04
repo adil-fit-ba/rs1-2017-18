@@ -1,0 +1,35 @@
+﻿@using Ispit_2017_09_11_DotnetCore.ViewModels
+@model Ispit_2017_09_11_DotnetCore.ViewModels.StavkeIndexVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<h3>Odjeljenje stavke:</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <td>Broj u dnevniku</td>
+        <td>Ucenik</td>
+        <td>Broj zakljucenih ocjena(kraj godine)</td>
+        <td>Akcija</td>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var Item in Model.Rows)
+    {
+        <tr>
+            <td>@Item.BrojUDnevniku</td>
+            <td>@Item.Ucenik</td>
+            <td>@Item.BrojZakjucnihOcjena</td>
+            <td><a asp-action="Obrisi" asp-route-StavkaId="@Item.StavkaId" ajax-poziv="da" ajax-rezultat="ajaxDiv">Obrisi</a></td>
+  
+        </tr>
+        
+    }
+
+    </tbody>
+</table>
+
+<a asp-action="Dodaj" asp-route-odjeljenjeid="@Model.OdjeljenjId" class="btn btn-success">Dodaj</a>

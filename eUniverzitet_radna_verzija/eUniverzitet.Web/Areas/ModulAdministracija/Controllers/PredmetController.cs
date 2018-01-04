@@ -12,7 +12,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eUniverzitet.Web.Areas.ModulAdministracija.Controllers
 {
-   [Autorizacija(_uloga = new []{KorisnickaUloga.AdministratorInstitucije})]
+
+    [Autorizacija(_uloga = new []{KorisnickaUloga.AdministratorInstitucije, KorisnickaUloga.ProdekanNIR})]
    [Area(MyAreaNames.ModulAdministracija)]
     public class PredmetController : Controller
     {

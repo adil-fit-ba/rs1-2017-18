@@ -6,6 +6,7 @@ using Ispit_2017_09_11_DotnetCore.EF;
 using Ispit_2017_09_11_DotnetCore.EntityModels;
 using Ispit_2017_09_11_DotnetCore.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ispit_2017_09_11_DotnetCore.Controllers
 {
@@ -43,8 +44,21 @@ namespace Ispit_2017_09_11_DotnetCore.Controllers
 
         public IActionResult Detalji(int odjeljenjeID)
         {
-            Odjeljenje a = _context.Odjeljenje.Find(odjeljenjeID);
-            OdjeljenjeDetaljiVM model = new OdjeljenjeDetaljiVM(a, _context);
+            OdjeljenjeDetaljiVM model = _context.Odjeljenje
+                .Where(c => c.Id == odjeljenjeID)
+                .Select(s => new OdjeljenjeDetaljiVM
+                {
+                    SkolskaGodina = s.SkolskaGodina,
+                    Razrednik = s.Nastavnik.ImePrezime,
+                    OdjeljenjeID = s.Id,
+                    Oznaka = s.Oznaka,
+                    Razred = s.Razred,
+                    BrojPredmeta = _context.DodjeljenPredmet.Count(p => p.OdjeljenjeStavka.OdjeljenjeId==odjeljenjeID),
+                    
+                })
+                .Single();
+
+
 
             return View(model);
         }
