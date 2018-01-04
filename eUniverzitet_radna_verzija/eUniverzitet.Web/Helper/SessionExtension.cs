@@ -5,6 +5,7 @@ namespace eUniverzitet.Web.Helper
 {
     public static class SessionExtension
     {
+        // preuzeto https://docs.microsoft.com/en-us/aspnet/core/fundamentals/app-state?tabs=aspnetcore2x
         public static void SetJson(this ISession session, string key, object value)
         {
             session.SetString(key, JsonConvert.SerializeObject(value));
