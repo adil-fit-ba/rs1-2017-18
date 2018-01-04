@@ -19,6 +19,7 @@
 <script>
     $.get("@Url.Action("Index", "Stavke", new { OdjeljenjeID = Model.OdjeljenjeID })" , function (data, status) {
         $("#ajaxDiv").html(data);
+       
     });
 
 </script>
