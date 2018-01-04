@@ -1,0 +1,67 @@
+﻿@using eUniverzitet.Web.Areas.ModulAdministracija.Models
+@model eUniverzitet.Web.Areas.ModulAdministracija.Models.PredmetIndexVM
+
+
+<h2>Upravljanje predmetima</h2>
+
+<div>
+    <div class="form-group">
+        <label class="control-label">Fakultet</label>
+        <input type="text" class="form-control" value="@Model.FakultetNaziv" disabled />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Odsjek</label>
+        <input type="text" class="form-control" value="@Model.OdsjekNaziv" disabled/>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label">NPP</label>
+        <input type="text" class="form-control" value="@Model.NppNaziv" disabled />
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Godina studija</th>
+            <th>Naziv predmeta</th>
+            <th>ECTS</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (PredmetIndexVM.PredmetInfo x in Model.TabelaPodaci)
+        {
+            <tr>
+                <td>@x.GodinaStudija</td>
+                <td>@x.Naziv</td>
+                <td>@x.Ects</td>
+                <td>
+                    @Html.ActionLink("Obriši", "Obrisi", new { predmetId = x.Id }, new { @class = "btn btn-danger btn-sm" })
+                    @Html.ActionLink("Uredi", "Uredi", new { predmetId = x.Id }, new { @class = "btn btn-info btn-sm" })
+                    @Ajax.ActionLink("Izvođenje", "Index", "IzvodjenjePredmeta", new { predmetId = x.Id }, new AjaxOptions { UpdateTargetId = "IzvodjenjePredmeta" }, new { @class = "btn btn-warning btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Dodaj novi", "Dodaj", new {nppId = Model.NppId}, new {@class = "btn btn-success btn-sm"})
+</div>
+
+
+
+<div class="panel panel-success" style="margin-top: 20px">
+    <div class="panel-heading">
+        Izvođenje predmeta
+    </div>
+    <div class="panel-body">
+        <div id="IzvodjenjePredmeta"></div>
+    </div>
+</div>
+
+
+

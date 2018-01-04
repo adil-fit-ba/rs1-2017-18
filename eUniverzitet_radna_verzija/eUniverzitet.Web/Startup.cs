@@ -33,11 +33,9 @@ namespace eUniverzitet.Web
 
             services.AddMvc(options =>
             {
-                options.Filters.Add(typeof(Autorizacija));
-            })
-                .AddSessionStateTempDataProvider(); ;
+            }).AddSessionStateTempDataProvider();   //dodato - sesija
 
-            //dodato zbog sesisije
+            //dodato - sesija
             services.AddSession();
 
         }
@@ -45,7 +43,7 @@ namespace eUniverzitet.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //dodato zbog sesisije
+            //dodato - sesija
             app.UseSession();
 
             if (env.IsDevelopment())

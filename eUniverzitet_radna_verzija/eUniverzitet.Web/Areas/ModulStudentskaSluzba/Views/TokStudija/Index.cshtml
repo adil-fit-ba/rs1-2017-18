@@ -1,0 +1,38 @@
+﻿@model eUniverzitet.Web.Areas.ModulStudentskaSluzba.Models.TokStudijaIndexVM
+
+<h2>
+    @Model.OpsteInfo.BrojIndeksa, @Model.OpsteInfo.Ime  @Model.OpsteInfo.Prezime
+</h2>
+
+
+@if (Model.UpisGodineDetaljno != null)
+{
+    @Html.Partial("Index/UpisGodineDetaljno", Model.UpisGodineDetaljno);
+}
+
+
+<ul class="nav nav-tabs">
+    <li><a href="#opsteinfo" data-toggle="tab">Opšte informacije</a></li>
+    <li><a href="#upisi" data-toggle="tab">Upisane godine i semestri</a></li>
+    <li><a href="#predmeti" data-toggle="tab">Slusa predmete</a></li>
+    <li><a href="#uplate" data-toggle="tab">Uplate</a></li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade  " id="opsteinfo">
+        @Html.Partial("Index/OpsteInfo", Model.OpsteInfo)
+    </div>
+
+    <div class="tab-pane fade in active" id="upisi">
+        @Html.Partial("Index/UpisaneGodine", Model.UpisaneGodine)
+    </div>
+
+    <div class="tab-pane fade" id="predmeti">
+        @Html.Partial("Index/SlusaPredmete", Model.SlusaPredmete)
+    </div>
+
+    <div class="tab-pane fade" id="uplate">
+        @Html.Partial("Index/Uplate", Model.Uplate)
+    </div>
+</div>
+

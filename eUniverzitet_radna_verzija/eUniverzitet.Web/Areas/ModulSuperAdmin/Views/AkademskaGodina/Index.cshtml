@@ -1,0 +1,34 @@
+﻿@using eUniverzitet.Web.Areas.ModulSuperAdmin.Models
+@model eUniverzitet.Web.Areas.ModulSuperAdmin.Models.AkademskaGodinaIndexVM
+
+
+<h2>Upravljanje akademskim godinama</h2>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Opis</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (AkademskaGodinaIndexVM.AkademskaGodinaInfo x in Model.TabelaPodaci)
+        {
+            <tr>
+                <td>@x.Opis</td>
+                <td>
+                    @Ajax.ActionLink("Obriši", "Obrisi", new { id = x.Id }, new AjaxOptions{ Confirm = "Obrisati akademsku godinu?"}, new { @class = "btn btn-danger btn-sm" })
+                    @Ajax.ActionLink("Uredi", "Uredi", new { id = x.Id }, new AjaxOptions { UpdateTargetId = "ajaxDialog", OnSuccess = "otvoriDialog" }, new { @class = "btn btn-info btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    @Ajax.ActionLink("Dodaj novu", "Dodaj", new { }, new AjaxOptions { UpdateTargetId = "ajaxDialog", OnSuccess = "otvoriDialog" }, new { @class = "btn btn-success btn-sm" })
+</div>
+
+

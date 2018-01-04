@@ -1,0 +1,40 @@
+﻿@using eUniverzitet.Data.DAL
+@using eUniverzitet.Web.Areas.ModulSuperAdmin.Models
+@model eUniverzitet.Web.Areas.ModulSuperAdmin.Models.ZaposlenjeIndexVM
+
+
+@{
+    Layout = null;
+}
+
+<table class="table ">
+    <thead>
+        <tr style="color: rgb(193, 181, 181)">
+            <th style="width: 17%">Organizaciona jedinica</th>
+            <th style="width: 17%">Radno mjesto</th>
+            <th style="width: 17%">Korisnička uloga</th>
+            <th style="width: 17%">Datum početka</th>
+            <th style="width: 17%">Datum kraja</th>
+            <th style="width: 17%;">
+                @Ajax.ActionLink("+", "Dodaj", new { zaposlenikId = Model.ZaposlenikId }, new AjaxOptions { UpdateTargetId = "ajaxZaposlenje-" + Model.ZaposlenikId }, new { @class = "btn btn-success btn-sm" })
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ZaposlenjeIndexVM.ZaposlenjeInfo x in Model.TabelaPodaci)
+        {
+            <tr>
+                <td>@x.OrganizacionaJedinica</td>
+                <td>@x.RadnoMjesto</td>
+                <td>@x.KorisnickaUloga</td>
+                <td>@x.DatumPocetak.ToMyStrDMYYYY()</td>
+                <td>@x.DatumKraja.ToMyStrDMYYYY("")</td>
+                <td>
+                    @Ajax.ActionLink("Obriši", "Obrisi", new { zaposlenjeId = x.Id }, new AjaxOptions { UpdateTargetId = "ajaxZaposlenje-" + Model.ZaposlenikId }, new { @class = "btn btn-danger btn-sm" })
+                    @Ajax.ActionLink("Uredi", "Uredi", new { zaposlenjeId = x.Id }, new AjaxOptions { UpdateTargetId = "ajaxZaposlenje-" + Model.ZaposlenikId }, new { @class = "btn btn-info btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,30 @@
+﻿@model eUniverzitet.Web.Areas.ModulStudentskaSluzba.Models.TokStudija.OpsteInfoVM
+           
+<div>
+
+    <div class="form-group">
+        <label class="control-label">Fakultet</label>
+            <input type="text" class="form-control" value="@Model.Fakultet" disabled />
+    </div>
+
+    <div class="form-group">
+        <label class=" control-label">Smjer</label>
+            <input type="text" class="form-control" value="@Model.Odsjek" disabled />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Nastavni plan i program</label>
+            <input type="text" class="form-control" value="@Model.NPP" disabled />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Opština prebivališta</label>
+            <input type="text" class="form-control" value="@Model.OpstinaPrebivalista" disabled />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Opština rođenja</label>
+            <input type="text" class="form-control" value="@Model.OpstinaRodjenja" disabled />
+    </div>
+    @Html.ActionLink("Uredi", "Uredi", "Student", new { studentId = Model.StudentId }, new {})
+</div>

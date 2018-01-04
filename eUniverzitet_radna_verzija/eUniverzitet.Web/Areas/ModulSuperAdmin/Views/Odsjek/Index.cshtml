@@ -1,0 +1,41 @@
+﻿@using eUniverzitet.Web.Areas.ModulSuperAdmin.Models
+@model eUniverzitet.Web.Areas.ModulSuperAdmin.Models.OdsjekIndexVM
+
+
+<h2>Upravljanje odsjecima</h2>
+
+<div class="form-group">
+    <label class="control-label">Fakultet</label>
+    <input type="text" class="form-control" value="@Model.FakultetNaziv" disabled/>
+</div>
+
+
+<table class="table table-striped">
+    <thead>
+         <tr>
+            <th>Naziv odsjeka</th>
+            <th>Broj studenata</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (OdsjekIndexVM.OdsjekInfo x in Model.TabelaPodaci)
+        {
+            <tr>
+                <td>@x.OdsjekNaziv</td>
+                <td>@x.BrojStudenata</td>
+                <td>
+                    @Html.ActionLink("Obriši", "Obrisi", new {smjerId = x.Id}, new {@class = "btn btn-danger btn-sm"})
+                    @Html.ActionLink("Uredi", "Uredi", new {smjerId = x.Id}, new {@class = "btn btn-info btn-sm"})
+                    @Html.ActionLink("NPP", "Index", "Npp", new {odsjekId = x.Id, area = "ModulAdministracija"}, new {@class = "btn btn-warning btn-sm"})
+                    <a href="/Reports/Report1.aspx?odsjekId=@x.Id" class="btn btn-info btn-sm">Izvještaj</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Dodaj novi", "Dodaj", new { fakultetId = Model.FakultetId }, new { @class = "btn btn-success btn-sm" })
+</div>

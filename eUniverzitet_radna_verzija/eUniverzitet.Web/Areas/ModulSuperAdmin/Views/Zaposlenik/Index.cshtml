@@ -1,0 +1,47 @@
+﻿@using eUniverzitet.Web.Areas.ModulSuperAdmin.Models
+@model eUniverzitet.Web.Areas.ModulSuperAdmin.Models.ZaposlenikIndexVM
+
+
+<h2>Upravljanje zaposlenicima</h2>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Prezime</th>
+            <th>Ime</th>
+            <th>Akcije</th>
+            <th>Radna mjesta</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (ZaposlenikIndexVM.ZaposlenikInfo x in Model.TabelaPodaci)
+        {
+            <tr>
+                <td>@x.Prezime</td>
+                <td>@x.Ime</td>
+
+                <td>
+                    @Ajax.ActionLink("Obriši", "Obrisi", new { zaposlenikId = x.Id }, new AjaxOptions { Confirm = "Are you sure?" }, new { @class = "btn btn-danger btn-sm" })
+                    @Html.ActionLink("Uredi", "Uredi", new { zaposlenikId = x.Id }, new { @class = "btn btn-info btn-sm" })
+                </td>
+                <td>
+                    <div id="ajaxZaposlenje-@x.Id">
+                        @Html.Action("Index", "Zaposlenje", new { zaposlenikId = x.Id })
+                    </div>
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<div>
+    @Html.ActionLink("Novi radnik", "Dodaj", new { }, new { @class = "btn btn-success btn-sm" })
+</div>
+
+
+
+

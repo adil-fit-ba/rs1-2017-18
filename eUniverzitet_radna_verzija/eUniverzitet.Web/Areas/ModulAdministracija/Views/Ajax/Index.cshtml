@@ -1,0 +1,20 @@
+﻿@model eUniverzitet.Web.Areas.ModulAdministracija.Models.PredajeUrediVM
+
+
+
+<label>ovo neki tmp texbox</label>
+<input type="text"/>
+
+<form asp-action="Poziv" asp-controller="Ajax" ajax-poziv="da" ajax-rezultat="rezultat">
+    <label>unos</label>
+    <input type="text" name="ime" />
+    <input type="submit" value="Snimi" class="btn btn-danger" />
+</form>
+
+    <div id="rezultat"><!-- Will be populated by AJAX method --></div>
+
+
+
+
+
+

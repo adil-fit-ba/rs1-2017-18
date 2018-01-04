@@ -1,0 +1,25 @@
+﻿@model eUniverzitet.Web.Areas.ModulSuperAdmin.Models.OdsjekUrediVM
+
+<h2>Upravljanje odsjecima</h2>
+
+<div class="form-group">
+    <label class="control-label">Fakultet</label>
+    <input type="text" class="form-control" value="@Model.FakultetNaziv" disabled/>
+</div>
+
+@using (Html.BeginForm("Snimi", "Odsjek"))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.FakultetId)
+    
+    
+    <div class="form-group">
+        <label>Naziv</label>
+        <div>
+           @Html.TextBoxFor(model => model.OdjsekNaziv, new {@class = "form-control"})
+        </div>
+    </div>
+    
+    <input type="submit" value="Snimi" class="btn btn-danger" />
+}
+

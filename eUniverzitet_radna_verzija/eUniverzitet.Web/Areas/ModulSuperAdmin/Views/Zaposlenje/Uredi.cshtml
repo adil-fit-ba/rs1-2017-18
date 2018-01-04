@@ -1,0 +1,48 @@
+﻿@model eUniverzitet.Web.Areas.ModulSuperAdmin.Models.ZaposlenjeUrediVM
+
+@{
+    Layout = null;
+}
+
+@using (Ajax.BeginForm("Snimi", "Zaposlenje", new AjaxOptions { UpdateTargetId = "ajaxZaposlenje-" + Model.zaposlenikId }))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.zaposlenikId)
+
+    <div class="form-group">
+        <label>Organizaciona jedinica</label>
+        @Html.DropDownListFor(model => model.OrganizacionaJedinicaId, Model.OrganizacionaJedinicaStavke, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.OrganizacionaJedinicaId)
+    </div>
+
+    <div class="form-group">
+        <label>Zaposlenje</label>
+        @Html.DropDownListFor(model => model.ZaposljenjeMjestoId, Model.ZaposlenjeMjestoStavke, new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.ZaposljenjeMjestoId)
+    </div>
+
+    <div class="form-group">
+        <label>Korisnička uloga</label>
+        @Html.DropDownListFor(model => model.KorisnickaUloga, Model.KorisnickaUlogaStavke, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.KorisnickaUloga)
+    </div>
+
+    <div class="form-group">
+        <label>Datum Početak</label>
+        @Html.TextBoxFor(model => model.DatumPocetak, new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.DatumPocetak)
+    </div>
+    
+    <div class="form-group">
+        <label>Datum kraj</label>
+        @Html.TextBoxFor(model => model.DatumKraj, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.DatumKraj)
+    </div>
+
+    <div>
+        @Html.ValidationSummary()
+    </div>
+    <input type="submit" value="Snimi" class="btn btn-primary" />
+    @Ajax.ActionLink("Odustani", "Index", "Zaposlenje", new { zaposlenikId = Model.zaposlenikId }, new AjaxOptions { UpdateTargetId = "ajaxZaposlenje-" + Model.zaposlenikId }, new {@class="btn btn-default"})
+}
+

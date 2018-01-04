@@ -1,0 +1,33 @@
+﻿@using eUniverzitet.Web.Areas.ModulSuperAdmin.Models
+@model eUniverzitet.Web.Areas.ModulSuperAdmin.Models.OrganizacionaJedinicaIndexVM
+
+
+<h2>Upravljanje organizacionim jedinicama</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Tip</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (OrganizacionaJedinicaIndexVM.Info x in Model.TabelaPodaci)
+    {
+        <tr>
+            <td>@x.Naziv</td>
+            <td>@x.Tip</td>
+            <td>
+                @Html.ActionLink("Obriši", "Obrisi", new { organizacionaJedinicaId = x.Id }, new { @class = "btn btn-danger btn-sm" })
+                @Html.ActionLink("Uredi", "Uredi", new { organizacionaJedinicaId = x.Id }, new { @class = "btn btn-info btn-sm" })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Dodaj novi", "Dodaj", new { }, new { @class = "btn btn-success btn-sm" })
+</div>

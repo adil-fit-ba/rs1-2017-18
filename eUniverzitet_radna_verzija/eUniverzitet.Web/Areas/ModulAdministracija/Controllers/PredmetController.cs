@@ -4,20 +4,16 @@ using eUniverzitet.Data.EF;
 using eUniverzitet.Data.Models;
 using eUniverzitet.Web.Areas.ModulAdministracija.Models;
 using eUniverzitet.Web.Helper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace eUniverzitet.Web.Areas.ModulAdministracija.Controllers
 {
-
-    [Autorizacija(_uloga = new []{KorisnickaUloga.AdministratorInstitucije, KorisnickaUloga.ProdekanNIR})]
-   [Area(MyAreaNames.ModulAdministracija)]
+    [Area(MyAreaNames.ModulAdministracija)]
+    [Autorizacija(KorisnickaUloga.SuperAdministrator, KorisnickaUloga.AdministratorInstitucije)]
     public class PredmetController : Controller
     {
-
         private MojContext ctx;
 
         public PredmetController(MojContext ctx)
@@ -30,7 +26,7 @@ namespace eUniverzitet.Web.Areas.ModulAdministracija.Controllers
             NPP npp = ctx.NPPs.Where(x => x.Id == nppId)
              .Include(x => x.Odsjek.Fakultet)
              .Include(x => x.AkademskaGodina)
-             .SingleOrDefault();
+             .Single();
 
 
             List<PredmetIndexVM.PredmetInfo> predmeti = (ctx.Predmets
@@ -68,7 +64,7 @@ namespace eUniverzitet.Web.Areas.ModulAdministracija.Controllers
             return View("Uredi", model);
         }
 
-       
+
 
         public ActionResult Uredi(int predmetId)
         {
@@ -110,7 +106,7 @@ namespace eUniverzitet.Web.Areas.ModulAdministracija.Controllers
 
             ctx.SaveChanges();
 
-            return RedirectToAction("Index", new { nppId = entity.NppId});
+            return RedirectToAction("Index", new { nppId = entity.NppId });
         }
 
         public ActionResult Obrisi(int predmetId)

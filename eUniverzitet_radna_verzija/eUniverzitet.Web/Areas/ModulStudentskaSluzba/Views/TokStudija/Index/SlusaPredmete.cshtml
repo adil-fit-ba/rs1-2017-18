@@ -1,0 +1,27 @@
+﻿@using eUniverzitet.Data.DAL
+@using eUniverzitet.Web.Areas.ModulStudentskaSluzba.Models.TokStudija
+@model System.Collections.Generic.List<eUniverzitet.Web.Areas.ModulStudentskaSluzba.Models.TokStudija.SlusaPredmeteVM>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Godina studija</th>
+            <th>Naziv predmeta</th>
+            <th>ECTS</th>
+            <th>Ocjena</th>
+            <th>Datum ocjene</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (SlusaPredmeteVM x in Model)
+        {
+            <tr>
+                <td>@x.GodinaStudija</td>
+                <td>@x.NazivPredmeta</td>
+                <td>@x.ECTS</td>
+                <td>@x.Ocjena</td>
+                <td>@x.DatumOcjene.ToMyStrDMYYYY("")</td>
+            </tr>
+        }
+    </tbody>
+</table>

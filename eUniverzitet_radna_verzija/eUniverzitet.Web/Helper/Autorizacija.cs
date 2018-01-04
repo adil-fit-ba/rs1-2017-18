@@ -10,19 +10,33 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace eUniverzitet.Web.Helper
 {
-    public class Autorizacija : ActionFilterAttribute
-    {
-       
-        public KorisnickaUloga[] _uloga { get; set; }
 
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+    public class AutorizacijaAttribute : TypeFilterAttribute
+    {
+        public AutorizacijaAttribute(params KorisnickaUloga[] item)
+            : base(typeof(MyAuthorizeImpl))
+        {
+            Arguments = new object[] { item };
+        }
+    }
+
+
+    public class MyAuthorizeImpl : IAsyncActionFilter
+    {
+        private IEnumerable<KorisnickaUloga> _uloga;
+
+        public MyAuthorizeImpl(KorisnickaUloga[] uloga)
+        {
+            _uloga = uloga;
+        }
+
+        public async Task OnActionExecutionAsync(ActionExecutingContext filterContext, ActionExecutionDelegate next)
         {
             Korisnik k = Autentifikacija.GetLogiraniKorisnik(filterContext.HttpContext);
 
             if (k == null)
             {
-                filterContext.HttpContext.Response.Redirect("/Autentifikacija");
-                filterContext.HttpContext.Response.StatusCode = 401; //not authorized
+                filterContext.Result = new RedirectToActionResult("Index", "Autentifikacija", new { @area = "" });
                 return;
             }
 
@@ -42,16 +56,13 @@ namespace eUniverzitet.Web.Helper
                 }
             }
 
-            //ako funkcija nije prekinuta pomoću "return", onda korisnik nema pravo pistupa pa će se vršiti redirekcija na "/Home/Index"
-            filterContext.HttpContext.Response.Redirect("/Autentifikacija");
-
-            filterContext.HttpContext.Response.StatusCode = 401; //not authorized
-
-           // base.OnActionExecuting(filterContext);
+            filterContext.Result = new UnauthorizedResult();
         }
 
-
-     
+        public void OnActionExecuted(ActionExecutedContext context)
+        {
+            // throw new NotImplementedException();
+        }
     }
 }
 

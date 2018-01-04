@@ -1,0 +1,28 @@
+﻿@using System.Diagnostics
+@model eUniverzitet.Web.Areas.ModulAdministracija.Models.IzvodjenjePredmetaUrediVM
+
+@{
+    Layout = null;
+}
+
+<h3>@Model.PredmetNaziv</h3>
+
+@using (Ajax.BeginForm("Snimi", "IzvodjenjePredmeta", new AjaxOptions { UpdateTargetId = "IzvodjenjePredmeta" }))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.PredmetId)
+
+ 
+    <div class="control-group">
+        <label>Akademska godina</label>
+        @Html.DropDownListFor(model => model.AkademskaGodinaId, Model.AkademskeGodineStavke, new {@class = "form-control"})
+    </div>
+    
+    <input type="submit" value="Snimi" class="btn btn-danger" />
+}
+
+
+
+
+
+

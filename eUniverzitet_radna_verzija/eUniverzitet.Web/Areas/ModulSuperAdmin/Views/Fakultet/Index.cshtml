@@ -1,0 +1,30 @@
+﻿@using eUniverzitet.Web.Areas.ModulSuperAdmin.Models
+@model eUniverzitet.Web.Areas.ModulSuperAdmin.Models.FakultetIndexVM
+
+
+
+<h2>Upravljanje Fakultetima</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Tip</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (FakultetIndexVM.Info x in Model.TabelaPodaci)
+    {
+        <tr>
+            <td>@x.Naziv</td>
+            <td>@x.NaucnaOblast</td>
+            <td>
+                @Html.ActionLink("Odsjeci", "Index", "Odsjek", new { fakultetId = x.Id }, new { @class = "btn btn-warning btn-sm" })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+

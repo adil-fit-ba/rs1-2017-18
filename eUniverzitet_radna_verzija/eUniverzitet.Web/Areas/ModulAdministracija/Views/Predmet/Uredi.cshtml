@@ -1,0 +1,38 @@
+﻿@model eUniverzitet.Web.Areas.ModulAdministracija.Models.PredmetUrediVM
+
+<h2>Upravljanje predmetima</h2>
+
+
+@using (Html.BeginForm("Snimi", "Predmet"))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.NppId)
+    
+    
+    
+    <div class="form-group">
+        <label>Godina studija</label>
+        <div>
+            @Html.DropDownListFor(model => model.GodinaStudija, Model.GodinaStudijaStavke, new {@class = "form-control"})
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>Naziv</label>
+        <div>
+           @Html.TextBoxFor(model => model.PredmetNaziv, new {@class = "form-control"})
+        </div>
+    </div> 
+    
+    <div class="form-group">
+        <label>ECTS</label>
+        <div>
+           @Html.TextBoxFor(model => model.Ects, new {@class = "form-control"})
+        </div>
+    </div>
+
+
+
+    <input type="submit" value="Snimi" class="btn btn-danger" />
+}
+

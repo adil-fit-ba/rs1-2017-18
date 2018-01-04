@@ -1,0 +1,28 @@
+﻿@using System.Data.Entity.Infrastructure
+@using eUniverzitet.Web.Areas.ModulStudentskaSluzba.Models.TokStudija
+@model System.Collections.Generic.List<eUniverzitet.Web.Areas.ModulStudentskaSluzba.Models.TokStudija.UpisaneGodineVM>
+
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Godina studija</th>
+        <th>Zimski ovjera</th>
+        <th>Ljetni ovjera</th>
+        <th>Uplaćeno</th>
+        <th>Akcija</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (UpisaneGodineVM x in Model)
+        {
+            <tr>
+                <td>@x.GodinaStudija</td>
+                <td>@x.Datum2_ZimskiOvjera</td>
+                <td>@x.Datum4_LjetniOvjera</td>
+                <td>@x.Uplaceno</td>
+                <td>@Html.ActionLink("Detalji", "Index", "TokStudija", new { studentiranjeId = x.StudiranjeId, upisGodineId = x.Id}, new{})</td>
+            </tr>
+        }
+    </tbody>
+</table>

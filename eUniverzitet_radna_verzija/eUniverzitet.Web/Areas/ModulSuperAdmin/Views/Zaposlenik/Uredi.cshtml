@@ -1,0 +1,40 @@
+﻿@model eUniverzitet.Web.Areas.ModulSuperAdmin.Models.ZaposlenikUrediVM
+
+
+<h2>Upravljanje zaposlenicima</h2>
+
+@using (Html.BeginForm("Snimi", "Zaposlenik"))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.korisnikId)
+
+    <div class="form-group">
+        <label>Ime</label>
+        @Html.TextBoxFor(model => model.Ime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Ime)
+    </div>
+
+    <div class="form-group">
+        <label>Prezime</label>
+        @Html.TextBoxFor(model => model.Prezime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Prezime)
+    </div>
+
+    <div class="form-group">
+        <label>Korisničko ime</label>
+        @Html.TextBoxFor(model => model.KorisnickoIme, new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.KorisnickoIme)
+    </div>
+    
+    <div class="form-group">
+        <label>Lozinka</label>
+        @Html.TextBoxFor(model => model.Lozinka, new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.Lozinka)
+    </div>
+
+    <div>
+        @Html.ValidationSummary()
+    </div>
+    <input type="submit" value="Snimi" class="btn btn-primary" />
+
+}

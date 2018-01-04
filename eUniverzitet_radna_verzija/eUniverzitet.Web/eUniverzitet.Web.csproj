@@ -23,27 +23,18 @@
 
   <ItemGroup>
     <Folder Include="Areas\ModulAdministracija\Data\" />
-    <Folder Include="Areas\ModulAdministracija\Views\" />
-    <Folder Include="Areas\ModulEdukatori\Controllers\" />
     <Folder Include="Areas\ModulEdukatori\Data\" />
-    <Folder Include="Areas\ModulEdukatori\Models\" />
-    <Folder Include="Areas\ModulEdukatori\Views\" />
-    <Folder Include="Areas\ModulStudenti\Controllers\" />
+    <Folder Include="Areas\ModulEdukatori\ViewModels\" />
     <Folder Include="Areas\ModulStudenti\Data\" />
-    <Folder Include="Areas\ModulStudenti\Models\" />
-    <Folder Include="Areas\ModulStudenti\Views\" />
-    <Folder Include="Areas\ModulStudentskaSluzba\Controllers\" />
+    <Folder Include="Areas\ModulStudenti\ViewModels\" />
     <Folder Include="Areas\ModulStudentskaSluzba\Data\" />
-    <Folder Include="Areas\ModulStudentskaSluzba\Models\" />
-    <Folder Include="Areas\ModulStudentskaSluzba\Views\" />
-    <Folder Include="Areas\ModulSuperAdmin\Controllers\" />
+    <Folder Include="Areas\ModulStudentskaSluzba\Views\Shared\" />
     <Folder Include="Areas\ModulSuperAdmin\Data\" />
-    <Folder Include="Areas\ModulSuperAdmin\Models\" />
-    <Folder Include="Areas\ModulSuperAdmin\Views\" />
-    <Folder Include="Areas\ModulZaposlenik\Controllers\" />
     <Folder Include="Areas\ModulZaposlenik\Data\" />
-    <Folder Include="Areas\ModulZaposlenik\Models\" />
-    <Folder Include="Areas\ModulZaposlenik\Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\ModulAdministracija\Views\Home\Index.cshtml" />
   </ItemGroup>
 
 </Project>

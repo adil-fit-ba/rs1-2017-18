@@ -1,0 +1,48 @@
+﻿@using eUniverzitet.Web.Areas.ModulAdministracija.Models
+@model eUniverzitet.Web.Areas.ModulAdministracija.Models.NppIndexVM
+
+
+<h2>Upravljanje NPP-om</h2>
+
+<div>
+    <div class="form-group">
+        <label class="control-label">Fakultet</label>
+        <input type="text" class="form-control" value="@Model.FakultetNaziv" disabled />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Smjer</label>
+        <input type="text" class="form-control" value="@Model.OdsjekNaziv" disabled />
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Akademska godina</th>
+            <th>Naziv</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (NppIndexVM.NppInfo x in Model.TabelaPodaci)
+        {
+            <tr>
+                <td>@x.AkademskaGodina</td>
+                <td>@x.Naziv</td>
+                <td>
+                    @Html.ActionLink("Obriši", "Obrisi", new { NppId = x.Id }, new { @class = "btn btn-danger btn-sm" })
+                    @Html.ActionLink("Uredi", "Uredi", new { NppId = x.Id }, new { @class = "btn btn-info btn-sm" })
+                    @Html.ActionLink("Predmeti", "Index", "Predmet", new { NppId = x.Id }, new { @class = "btn btn-warning btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Dodaj novi", "Dodaj", new { OdsjekId = Model.OdsjekId }, new { @class = "btn btn-success btn-sm" })
+</div>
+
+
+

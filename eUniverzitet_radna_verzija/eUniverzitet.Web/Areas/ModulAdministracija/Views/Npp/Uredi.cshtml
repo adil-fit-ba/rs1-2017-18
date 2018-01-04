@@ -1,0 +1,28 @@
+﻿@model eUniverzitet.Web.Areas.ModulAdministracija.Models.NppUrediVM
+<h2>Upravljanje smjerovima</h2>
+
+
+@using (Html.BeginForm("Snimi", "Npp"))
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.OdsjekId)
+    @Html.HiddenFor(model => model.FakultetId)
+
+    <div class="form-group">
+        <label>Naziv</label>
+        <div>
+           @Html.TextBoxFor(model => model.Naziv, new {@class = "form-control"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Akademska godina</label>
+        <div>
+            @Html.DropDownListFor(model => model.AkademskaGodinaId, Model.AkademskaGodinaStavke, new { @class = "form-control" })
+        </div>
+    </div>   
+    
+
+    <input type="submit" value="Snimi" class="btn btn-danger" />
+}
+

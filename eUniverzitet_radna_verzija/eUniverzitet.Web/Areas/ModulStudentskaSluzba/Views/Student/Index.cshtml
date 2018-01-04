@@ -1,0 +1,66 @@
+﻿@using eUniverzitet.Web.Areas.ModulStudentskaSluzba.Models
+@model eUniverzitet.Web.Areas.ModulStudentskaSluzba.Models.StudentIndexVM
+
+
+<h2>Upravljanje studentima</h2>
+
+<form>
+    <div class="form-inline">
+        @Html.DropDownListFor(model => model.FakultetId, Model.FakultetStavke, new { @class = "form-control" })
+        <input type="submit" value="Filtiraj" class="btn btn-default" />
+    </div>
+</form>
+
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Datum rođenja</th>
+            <th>Akcija</th>
+            <th>Studiranje</th>
+
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (StudentIndexVM.StudentInfo x in Model.TabelaPodaci)
+        {
+            <tr>
+                <td>@x.Id</td>
+                <td>@x.Ime</td>
+                <td>@x.Prezime</td>
+                <td>@x.DatumRodjenja.ToMyStrDMYYYY()</td>
+                <td>
+                    @Html.ActionLink("Obriši", "Obrisi", new { studentId = x.Id }, new { @class = "btn btn-danger btn-sm" })
+                    @Html.ActionLink("Uredi", "Uredi", new { studentId = x.Id }, new { @class = "btn btn-info btn-sm" })
+                </td>
+                <td>
+                    <table class="table table-bordered">
+
+                        @foreach (StudentIndexVM.StudentiranjeInfo s in x.StudentiranjeInfos)
+                        {
+                            <tr>
+                                <td>@s.Id</td>
+                                <td>@s.Fakultet</td>
+                                <td>@s.Odjsek</td>
+                                <td>@s.Status.ToString()</td>
+                                <td>@s.Pocetak.ToMyStrDMYYYY()</td>
+                                <td>@s.Kraj.ToMyStrDMYYYY("")</td>
+                                <td>@Html.ActionLink("Detalji", "Index", "TokStudija", new { studentiranjeId = s.Id }, new { @class = "btn btn-warning btn-sm" })</td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+        
+ <div>
+    @Html.ActionLink("Dodaj novi", "Dodaj", new { }, new { @class = "btn btn-success btn-sm" })
+</div>

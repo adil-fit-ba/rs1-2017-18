@@ -1,0 +1,39 @@
+﻿@using eUniverzitet.Data.DAL
+@using eUniverzitet.Web.Areas.ModulZaposlenik.Models
+
+
+@model eUniverzitet.Web.Areas.ModulZaposlenik.Models.HomeIndexVM
+
+<h2>Zaposlenja</h2>
+
+<table class="table table-striped table-bordered dataTable no-footer" id="nesto1">
+    <thead>
+    <tr>
+        <th>Organizaciona jedinica</th>
+        <th>Radno mjesto</th>
+        <th>Pocetak</th>
+        <th>Kraj</th>
+        <th>Korisnicka uloga</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (HomeIndexVM.ZaposlenjaInfo x in Model.TabelaPodaci)
+    {
+        <tr>
+            <td>@x.OrganizacionaJedinica</td>
+            <td>@x.RadnoMjestoVrsta</td>
+            <td>@x.UgovorPocetak.ToMyStrDMYYYY()</td>
+            <td>@x.UgovorKraj.ToMyStrDMYYYY("")</td>
+
+            <td style="width: 200px">@Html.ActionLink(@x.KorisnickaUloga.ToString(), "OdabirZaposlenje", new {x.ZaposlenjeId}, new {@class = "btn btn-warning btn-block"})</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<script>
+    init.push(function () {
+        $('#nesto1').dataTable();
+    });
+
+</script>

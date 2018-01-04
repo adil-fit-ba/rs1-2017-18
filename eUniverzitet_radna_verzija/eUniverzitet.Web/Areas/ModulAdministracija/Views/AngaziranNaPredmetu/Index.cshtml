@@ -1,0 +1,44 @@
+﻿@using eUniverzitet.Web.Areas.ModulAdministracija.Models
+@model eUniverzitet.Web.Areas.ModulAdministracija.Models.AngaziranNaPredmetuIndexVM
+
+@{
+    Layout = null;
+}
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Ime i prezime</th>
+        <th>Zvanje</th>
+        <th>Uloga</th>
+        <th>
+            @Ajax.ActionLink("+", "Dodaj", new { IzvodjenjePredmetaId = Model.IzvodjenjePredmetaId }, new AjaxOptions { UpdateTargetId = "ajaxAngazmani-" + Model.IzvodjenjePredmetaId }, new { @class = "btn btn-success btn-sm" })
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach (AngaziranNaPredmetuIndexVM.NastavnoOsobljeInfo x in Model.TabelaPodaci)
+    {
+        <tr>
+            <td>@x.ImeIPrezime</td>
+            <td>@x.Zvanje</td>
+            <td>@x.Uloga</td>
+            <td>
+                @Ajax.ActionLink("Obriši", "Obrisi", new { angaziranNaPredmetId = x.Id }, new AjaxOptions { UpdateTargetId = "ajaxAngazmani-" + Model.IzvodjenjePredmetaId }, new { @class = "btn btn-danger btn-sm" })
+                @Ajax.ActionLink("Uredi", "Uredi", new { angaziranNaPredmetId = x.Id }, new AjaxOptions { UpdateTargetId = "ajaxAngazmani-" + Model.IzvodjenjePredmetaId }, new { @class = "btn btn-info btn-sm" })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+

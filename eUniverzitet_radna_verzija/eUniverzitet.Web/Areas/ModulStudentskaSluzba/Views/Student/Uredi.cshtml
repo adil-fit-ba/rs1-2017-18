@@ -1,0 +1,52 @@
+﻿@model eUniverzitet.Web.Areas.ModulStudentskaSluzba.Models.StudentUrediVM
+
+<h2>Upravljanje studentima</h2>
+
+@using (Html.BeginForm("Snimi", "Student"))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        <label>Ime</label>
+        @Html.TextBoxFor(model => model.Ime, new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.Ime)
+    </div>
+
+    <div class="form-group">
+        <label>Prezime</label>
+        @Html.TextBoxFor(model => model.Prezime, new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.Prezime)
+    </div>
+
+    <div class="form-group">
+        <label>Korisničko ime</label>
+        @Html.TextBoxFor(model => model.KorisnickoIme, new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.KorisnickoIme)
+    </div>
+
+    <div class="form-group">
+        <label>Lozinka</label>
+        @Html.TextBoxFor(model => model.Lozinka, new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.Lozinka)
+    </div>
+
+
+    <div class="form-group">
+        <label>Email adresa</label>
+        @Html.TextBoxFor(model => model.Email, new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+
+    <div class="form-group">
+        <label>Datum rođenja</label>
+        @Html.TextBoxFor(model => model.DatumRodjenja, new {@class = "form-control"})
+        @Html.ValidationMessageFor(model => model.DatumRodjenja)
+    </div>
+
+
+    <div>
+        @Html.ValidationSummary()
+    </div>
+    <input type="submit" value="Snimi" class="btn btn-default"/>
+
+}

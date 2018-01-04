@@ -1,0 +1,23 @@
+﻿@model eUniverzitet.Web.Areas.ModulAdministracija.Models.AngaziranNaPredmetuUrediVM
+
+@{
+}
+
+<form asp-action="Snimi" ajax-poziv="da" ajax-rezultat="@("ajaxAngazmani-" + Model.IzvodjenjePredmetaId)">
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.IzvodjenjePredmetaId)
+
+        <div class="control-group">
+            <label>Nastavno osoblje</label>
+            @Html.DropDownListFor(model => model.NastavnoOsobljeId, Model.NastavnoOsobljeStavke, new { @class = "form-control" })
+        </div>
+
+        <div class="control-group">
+            <label>Uloga na predmetu</label>
+            @Html.DropDownListFor(model => model.AngaziranNaPredmetTip, Model.AngaziranNaPredmetTipStavke, new { @class = "form-control" })
+        </div>
+
+        <input type="submit" value="Snimi" class="btn btn-danger" />
+        <a asp-action="Index" asp-route-izvodjenjePredmetaId="@Model.IzvodjenjePredmetaId" ajax-poziv="da" ajax-rezultat="@("ajaxAngazmani-" + Model.IzvodjenjePredmetaId )" class = "btn btn-default" >Odustani</a>
+</form>

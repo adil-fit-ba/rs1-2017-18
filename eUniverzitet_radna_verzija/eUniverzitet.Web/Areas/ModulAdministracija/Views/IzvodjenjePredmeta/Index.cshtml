@@ -1,0 +1,45 @@
+﻿@using eUniverzitet.Web.Areas.ModulAdministracija.Models
+@model eUniverzitet.Web.Areas.ModulAdministracija.Models.IzvodjenjePredmetaIndexVM
+
+@{
+    Layout = null;
+}
+
+<h3>@Model.PredmetNaziv</h3>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>AkademskaGodina</th>
+        <th>Akcija</th>
+        <th>Nastavno osoblje</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach (IzvodjenjePredmetaIndexVM.IzvodjenjeInfo x in Model.TabelaPodaci)
+    {
+        <tr>
+            <td>@x.AkademskaGodina</td>
+            <td>
+                @Ajax.ActionLink("Obriši", "Obrisi", new { izvodjenjePredmetaId = x.Id }, new AjaxOptions { UpdateTargetId = "IzvodjenjePredmeta"}, new { @class = "btn btn-danger btn-sm" })
+                @Ajax.ActionLink("Uredi", "Uredi", new { izvodjenjePredmetaId = x.Id }, new AjaxOptions { UpdateTargetId = "IzvodjenjePredmeta" }, new { @class = "btn btn-info btn-sm" })
+            </td>
+            <td>
+                <div id="ajaxAngazmani-@x.Id">
+                    @Html.Action("Index", "AngaziranNaPredmetu", new { izvodjenjePredmetaId = x.Id })
+                </div>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@Ajax.ActionLink("Dodaj novi", "Dodaj", new { predmetId = Model.PredmetId }, new AjaxOptions { UpdateTargetId = "IzvodjenjePredmeta" }, new { @class = "btn btn-success btn-sm" })
+
+
+
+
+
+
+

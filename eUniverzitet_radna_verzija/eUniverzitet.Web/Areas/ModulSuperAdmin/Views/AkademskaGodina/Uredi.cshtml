@@ -1,0 +1,36 @@
+﻿
+@model eUniverzitet.Web.Areas.ModulSuperAdmin.Models.AkademskaGodinaUrediVM
+
+
+@{
+    Layout = null;
+    
+
+}
+
+
+@using (Html.BeginForm("Snimi", "AkademskaGodina"))
+{
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h4 class="modal-title" id="myModalLabel">Akademska godina</h4>
+    </div>
+    
+    
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Naziv</label>
+            <div>
+                @Html.TextBoxFor(model => model.Opis, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Zatvori</button>
+        <input type="submit" value="Snimi" class="btn btn-danger" />
+    </div>
+
+}

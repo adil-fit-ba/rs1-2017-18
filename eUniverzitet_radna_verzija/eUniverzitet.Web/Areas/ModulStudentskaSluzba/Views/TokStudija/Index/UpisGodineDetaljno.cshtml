@@ -1,0 +1,54 @@
+﻿@model eUniverzitet.Web.Areas.ModulStudentskaSluzba.Models.UpisGodineDetaljnoVM
+
+@{
+    Layout = null;   
+}
+
+@using(Html.BeginForm("SnimiUpisGodine", "TokStudija"))
+{ 
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Godina studija</label>
+            <div class="col-sm-9">
+                @Html.DropDownListFor(model => model.GodinaStudija, Model.GodinaStudijaOptions, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Akademska godina</label>
+            <div class="col-sm-9">
+                @Html.DropDownListFor(model => model.AkademskaGodinaId, Model.AkademskaGodinaOptions, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Datum upisa u zimski semestar</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(vm => vm.Datum1_ZimskiUpis, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Datum ovjere zimskog semestra</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(vm => vm.Datum2_ZimskiOvjera, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Datum upisa u ljetni semestar</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(vm => vm.Datum3_LjetniUpis, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Datum ovjere u ljetnog semestra</label>
+            <div class="col-sm-9">
+                @Html.TextBoxFor(vm => vm.Datum4_LjetniOvjera, new { @class = "form-control" })
+            </div>
+        </div>
+        <input type="submit" class="form-control" value="Snimi"/>
+    </div>
+}
