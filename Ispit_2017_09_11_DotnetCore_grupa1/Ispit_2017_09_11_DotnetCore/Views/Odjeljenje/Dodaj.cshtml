@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Dodaj";
+}
+@model Ispit_2017_09_11_DotnetCore.ViewModels.OdjeljenjeDodajVM
+
+
+<h2>Dodaj</h2>
+
+<form asp-action="Snimi" method="get">
+    <div class="form-group">
+
+        <label asp-for="skGodina">Školska godina</label>
+        <input asp-for="skGodina" class="form-control" />
+    </div>
+
+    <div class="form-group">
+
+        <label asp-for="razred">Razred</label>
+        <input asp-for="razred" class="form-control" />
+    </div>
+
+
+    <div class="form-group">
+
+        <label asp-for="oznaka">Oznaka</label>
+        <input asp-for="oznaka" class="form-control" />
+    </div>
+
+    <div class="form-group">
+
+        <label asp-for="RazrednikId">Razrednik</label>
+        <select asp-for="RazrednikId" asp-items="@Model.RazrednikDropDownStavke" class="form-control"></select>
+    </div>
+
+
+    <div class="form-group">
+
+        <label asp-for="NizeOdjeljenjeId">Preuzmi:</label>
+        <select asp-for="NizeOdjeljenjeId" asp-items="@Model.NizeOdjeljenjeDropDownListItems" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+
+        <input type="submit" value="Snimi" />
+    </div>
+
+</form>
+
+

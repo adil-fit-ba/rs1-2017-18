@@ -34,9 +34,26 @@ namespace Ispit_2017_09_11_DotnetCore.Controllers
         public IActionResult Obrisi(int OdjeljenjeStavkaId)
         {
             var x = _context.OdjeljenjeStavka.Find(OdjeljenjeStavkaId);
+            int id = x.OdjeljenjeId;
             _context.OdjeljenjeStavka.Remove(x);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new {odjeljenjeID = id});
+            //  return Redirect("/Stavke/Index?odjeljenjeID="+OdjeljenjeStavkaId);
+        }
+
+        public IActionResult Dodaj()
+        {
+            return null;
+        }
+
+        public IActionResult Snimi()
+        {
+            return null;
+        }
+
+        public IActionResult Uredi()
+        {
+            return null;
         }
     }
 }

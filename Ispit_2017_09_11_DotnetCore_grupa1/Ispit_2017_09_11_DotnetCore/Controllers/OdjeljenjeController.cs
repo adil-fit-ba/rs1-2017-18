@@ -6,6 +6,7 @@ using Ispit_2017_09_11_DotnetCore.EF;
 using Ispit_2017_09_11_DotnetCore.EntityModels;
 using Ispit_2017_09_11_DotnetCore.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Ispit_2017_09_11_DotnetCore.Controllers
 {
@@ -60,6 +61,38 @@ namespace Ispit_2017_09_11_DotnetCore.Controllers
         {
             Odjeljenje x = _context.Odjeljenje.Find(odjeljenjeID);
             _context.Odjeljenje.Remove(x);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Dodaj()
+        {
+            OdjeljenjeDodajVM Model = new OdjeljenjeDodajVM();
+            Model.NizeOdjeljenjeDropDownListItems = _context.Odjeljenje.Select(x => new SelectListItem
+            {
+                Text = x.SkolskaGodina+" "+x.Oznaka,
+                Value = x.Id.ToString()
+            }).ToList();
+
+            Model.RazrednikDropDownStavke = _context.Nastavnik.Select(x => new SelectListItem
+            {
+                Text = x.ImePrezime,
+                Value = x.NastavnikID.ToString()
+            }).ToList();
+            return View(Model);
+        }
+
+        [HttpGet]
+        public IActionResult Snimi(OdjeljenjeDodajVM model)
+        {
+            Odjeljenje novi = new Odjeljenje
+            {
+                NastavnikID = model.RazrednikId,
+                Oznaka = model.oznaka,
+                Razred = model.razred,
+                SkolskaGodina = model.skGodina             
+            };
+            _context.Odjeljenje.Add(novi);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
