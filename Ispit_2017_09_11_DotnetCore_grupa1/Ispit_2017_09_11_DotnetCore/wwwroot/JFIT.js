@@ -1,6 +1,6 @@
 ﻿
 
-function ajaxEventi() {
+function DodajAjaxEvente() {
     $("button[ajax-poziv='da']").click(function (event) {
         $(this).attr("ajax-poziv", "dodan");
 
@@ -10,7 +10,6 @@ function ajaxEventi() {
 
         $.get(urlZaPoziv, function (data, status) {
             $("#" + divZaRezultat).html(data);
-            ajaxEventi();
         });
     });
 
@@ -30,7 +29,6 @@ function ajaxEventi() {
 
         $.get(urlZaPoziv, function (data, status) {
             $("#" + divZaRezultat).html(data);
-            ajaxEventi();
         });
     });
 
@@ -55,16 +53,16 @@ function ajaxEventi() {
             data: form.serialize(),
             success: function (data) {
                 $("#" + divZaRezultat).html(data);
-                ajaxEventi();
             }
         });
     });
 }
 $(document).ready(function () {
-
-    ajaxEventi();
-
-
+    // izvršava nakon što glavni html dokument bude generisan
+    DodajAjaxEvente();
 });
 
-   
+$(document).ajaxComplete(function () {
+    // izvršava nakon bilo kojeg ajax poziva
+    DodajAjaxEvente();
+});

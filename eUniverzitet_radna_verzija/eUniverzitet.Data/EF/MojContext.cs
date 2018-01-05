@@ -13,6 +13,19 @@ namespace eUniverzitet.Data.EF
         {
             base.OnModelCreating(modelBuilder);
 
+            
+
+            modelBuilder.Entity<Student>()
+                .HasOne(x => x.Korisnik)
+                .WithMany()
+                .HasForeignKey(x => x.KorisnikId);
+
+            modelBuilder
+                .Entity<Zaposlenik>()
+                .HasOne(x => x.Korisnik)
+                .WithMany()
+                .HasForeignKey(x => x.KorisnikId);
+
             modelBuilder.Entity<IzvodjenjePredmeta>()
                 .HasOne(pt => pt.Predmet)
                 .WithMany()

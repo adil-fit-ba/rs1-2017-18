@@ -40,7 +40,7 @@ namespace Ispit_2017_09_11_DotnetCore.EF
                
                 Odjeljenje o = odjeljenja[b % odjeljenja.Count];
                 b++;
-                var s = new OdjeljenjeStavka() {BrojUDnevniku = 0, Odjeljenje = o, Ucenik = x,};
+                var s = new OdjeljenjeStavka() {BrojUDnevniku = _context.OdjeljenjeStavka.Count(w => w.OdjeljenjeId==o.Id)+1, Odjeljenje = o, Ucenik = x,};
                 _context.OdjeljenjeStavka.Add(s);
                 foreach (Predmet p in predmeti.Where(w=>w.Razred==o.Razred))
                 {
