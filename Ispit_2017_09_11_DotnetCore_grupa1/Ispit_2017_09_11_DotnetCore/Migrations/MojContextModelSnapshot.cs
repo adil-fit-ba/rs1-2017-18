@@ -65,7 +65,7 @@ namespace Ispit_2017_09_11_DotnetCore.Migrations
 
                     b.Property<string>("Oznaka");
 
-                    b.Property<int>("Razred");
+                    b.Property<int>("BrojUDnevniku");
 
                     b.Property<string>("SkolskaGodina");
 
@@ -103,7 +103,7 @@ namespace Ispit_2017_09_11_DotnetCore.Migrations
 
                     b.Property<string>("Naziv");
 
-                    b.Property<int>("Razred");
+                    b.Property<int>("BrojUDnevniku");
 
                     b.HasKey("Id");
 

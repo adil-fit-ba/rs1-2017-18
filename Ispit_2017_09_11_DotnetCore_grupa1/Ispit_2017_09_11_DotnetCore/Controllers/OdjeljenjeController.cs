@@ -94,6 +94,28 @@ namespace Ispit_2017_09_11_DotnetCore.Controllers
             };
             _context.Odjeljenje.Add(novi);
             _context.SaveChanges();
+
+
+            List<OdjeljenjeStavka> stariUcenici = _context.OdjeljenjeStavka.Where(s => s.OdjeljenjeId == model.NizeOdjeljenjeId).ToList();
+
+            foreach (OdjeljenjeStavka x in stariUcenici)
+            {
+                int a = _context.DodjeljenPredmet.Where(s => s.OdjeljenjeStavkaId == x.Id)
+                    .Count(s => s.ZakljucnoKrajGodine == 1);
+
+
+                if (a == 0)
+                {
+                    _context.OdjeljenjeStavka.Add(
+                    new OdjeljenjeStavka
+                    {
+                        Odjeljenje =  novi,
+                        UcenikId = x.UcenikId
+                    });
+                }
+            }
+            _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
     }
