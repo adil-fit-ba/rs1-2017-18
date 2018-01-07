@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    //WebApplication1.ViewModels.StudentiIndexVM podaci = Model;
+ 
+}
+
+@model WebApplication1.ViewModels.StudentiIndexVM
+
+<h2>amina</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ime</th>
+            <th>prezime</th>
+            <th>zanimanje</th>
+            <th>grad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.studenti)
+        {
+            <tr>
+                <td>@(x.ime)</td>
+                <td>@(x.prezime)</td>
+                <td>@(x.zanimanje)</td>
+                <td>@(x.Grad?.Naziv)</td>
+                <td>
+                <a href="/studenti/obrisi?id=@(x.id)">Obrisi</a>
+                    <a href="/studenti/uredi?id=@(x.id)">Uredi</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<a href="/studenti/dodaj" class="btn btn-primary">Dodaj</a>
+
+
+
+

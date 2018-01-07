@@ -1,0 +1,61 @@
+﻿@{
+    WebApplication1.ViewModels.StudentDodajVM model = Model;
+}
+<form action="/Studenti/Snimi" method="get" style="border:2px dashed red">
+    <div class="form-group">
+        <label>Ime</label>
+        <input type="text" name="ime" placeholder="ime" class="form-control"  />
+</div>
+
+    <div class="form-group">
+        <label>Prezime</label>
+        <input type="text" name="prezime" placeholder="prezime" class="form-control" />
+        </div>       
+
+    <div class="form-group">
+        <label>DL Student</label>
+        <input type="checkbox" name="DL" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="pass" class="form-control" />
+    </div>
+
+    <div class="form-group"> @*komentar - combo box*@
+        <label>Grad</label>
+        @*<select name="Grad" class="form-control">
+            <option>(Odaberi grad)</option>
+            @foreach(var x in model.gradovi)
+            {
+                <option value="@x.id">@x.text</option>
+            }
+            </select>*@
+
+        @*@WebApplication1.helper.G.Kombobox("zanimanje", model.zanimanja)
+        @WebApplication1.helper.G.Kombobox("Grad", model.gradovi)*@
+
+        @Html.DropDownList("zanimanje", model.zanimanja)
+        @Html.DropDownList("Grad", model.gradovi)
+    </div>
+
+
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Snimi" />
+    </div>
+
+</form>
+
+
+@using (Html.BeginForm("Snimi", "Studenti", FormMethod.Get, new { style = "border:2px dashed red" }))
+{
+    @Html.TextBox("ime", "Ibrahim", new { @class="form-control"})
+    @Html.TextBox("prezime", "Suta", new { @class = "form-control" })
+    @Html.CheckBox("DL", false)
+    @Html.Password("pass", "");
+    @Html.DropDownList("zanimanje", model.zanimanja)
+    @Html.DropDownList("Grad", model.gradovi)
+    <input type="submit" class="btn btn-primary" value="Snimi" />
+
+}

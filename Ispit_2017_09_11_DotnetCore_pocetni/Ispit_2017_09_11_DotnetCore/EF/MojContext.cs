@@ -9,7 +9,7 @@ namespace Ispit_2017_09_11_DotnetCore.EF
             : base(options)
         {
         }
-
+     
 
         public DbSet<Predmet> Predmet { get; set; }
         public DbSet<DodjeljenPredmet> DodjeljenPredmet { get; set; }

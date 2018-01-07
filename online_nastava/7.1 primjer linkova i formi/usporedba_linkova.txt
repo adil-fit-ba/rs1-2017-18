@@ -1,0 +1,8 @@
+@*classic html - bez helpera*@
+<a href="kontroler/akcija?parametar1=vrijednost1&parametar2=vrijednost2" class="btn btn-warning" style="border:dashed">Opis</a>
+
+@*mvc html helpers*@
+@Html.ActionLink("Opis", "Akcija", "Kontroler", new { parametar1 = vrijednost1, parametar2 = vrijednost2 }, new { @class = "btn btn-warning", style = "border:dashed" })
+
+@*mvc tag helpers*@
+<a asp-controller="Account" asp-action="Register" asp-route-parametar1="vrijednost1" asp-route-parametar2="vrijednost2">Register</a>

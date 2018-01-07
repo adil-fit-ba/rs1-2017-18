@@ -1,6 +1,8 @@
-﻿
+﻿@using Ispit_2017_09_11_DotnetCore.ViewModels
+
 @{
     ViewData["Title"] = "Index";
+    OdjeljenjeIndexVM ulazniPodatak = Model;
 }
 
 <h2>Index</h2>
@@ -17,6 +19,20 @@
     </tr>
     </thead>
     <tbody>
-    
+    @foreach (OdjeljenjeIndexVM.Row x in ulazniPodatak.Rows)
+    {
+        <tr>
+            <td>@x.SkolskaGodina</td>
+            <td>@x.Razred</td>
+            <td>@x.Oznaka</td>
+            <td>@x.Razrednik</td>
+            <td>@(x.Prebacen?"DA":"NE")</td>
+            <td>
+                <a href="/Odjeljenje/Obrisi?odjeljenjeId=@x.OdjeljenjeID">Obrisi</a>
+            </td>
+        </tr>
+    }
     </tbody>
 </table>
+
+<a href="/Odjeljenje/Dodaj">Dodaj</a>

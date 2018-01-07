@@ -1,0 +1,93 @@
+﻿@model WebApplication1.ViewModels.StudentUrediVM
+
+<form action="/Studenti/Snimi" method="get" style="border:2px dashed red">
+    <div class="form-group">
+        <label>ID</label>
+        <input name="id" class="form-control" readonly value="@Model.student.id" />
+    </div>
+
+    <div class="form-group">
+        <label>Ime</label>
+        <input type="text" name="ime" placeholder="ime" class="form-control" value="@Model.student.ime" />
+    </div>
+
+    <div class="form-group">
+        <label>Prezime</label>
+        <input type="text" name="prezime" placeholder="prezime" class="form-control" value="@Model.student.prezime" />
+    </div>
+
+    <div class="form-group">
+        <label>DL Student</label>
+        <input type="checkbox" name="DL" class="form-control" @(Model.student.isDL ? "checked" : "") />
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="pass" class="form-control" value="@Model.student.password" />
+    </div>
+
+    <div class="form-group">
+        @*komentar - combo box*@
+        <label>Grad</label>
+        <select name="Grad" class="form-control">
+            <option>(Odaberi grad)</option>
+
+            @foreach (var x in Model.gradovi)
+            {
+                if (Model.student.Grad != null && x.Value == Model.student.Grad.id.ToString())
+                {
+                    <option value="@x.Value" selected>@x.Text</option>
+                }
+                else
+                {
+                    <option value="@x.Value">@x.Text</option>
+                }
+            }
+        </select>
+
+
+        @*@WebApplication1.helper.G.Kombobox("zanimanje", model.zanimanja)
+            @WebApplication1.helper.G.Kombobox("Grad", model.gradovi)*@
+
+        @*@Html.DropDownList("zanimanje", model.zanimanja)
+            @Html.DropDownList("Grad", model.gradovi)*@
+    </div>
+    <div class="form-group">
+        @*komentar - combo box*@
+        <label>Zanimanje</label>
+        <select name="zanimanje" class="form-control">
+            <option>(Odaberi zanimanje)</option>
+
+            @foreach (var x in Model.zanimanja)
+            {
+                if (x.Text == Model.student.zanimanje)
+                {
+                    <option value="@x.Text" selected>@x.Text</option>
+                }
+                else
+                {
+                    <option value="@x.Text">@x.Text</option>
+                }
+            }
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Snimi" />
+    </div>
+
+</form>
+
+
+@*@using (Html.BeginForm("Snimi", "Studenti", FormMethod.Get, new { style = "border:2px dashed red" }))
+    {
+        @Html.TextBox("ime", "Ibrahim", new { @class="form-control"})
+        @Html.TextBox("prezime", "Suta", new { @class = "form-control" })
+        @Html.CheckBox("DL", false)
+        @Html.Password("pass", "");
+        @Html.DropDownList("zanimanje", model.zanimanja)
+        @Html.DropDownList("Grad", model.gradovi)
+        <input type="submit" class="btn btn-primary" value="Snimi" />
+
+    }*@

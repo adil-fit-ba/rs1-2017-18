@@ -1,0 +1,39 @@
+﻿@using WebApplication5.EntityModels
+
+@{
+    ViewData["Title"] = "Index";
+
+    List<Student> podaci1= ViewData["kljuc1"] as List<Student>;
+}
+
+<h2>Index</h2>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Opstina</th>
+        <th>Akcija</th>
+    </tr>   
+    </thead>
+    <tbody>
+    @foreach (Student x in podaci1)
+    {
+        <tr>
+            <td>@x.Id</td>
+            <td>@x.Ime</td>
+            <td>@x.Prezime</td>
+            <td>@x.Opstina?.Opis</td>
+            <td>
+                <a href="/studenti/obrisi?id=@x.Id">Obrisi</a>
+                <a href="/studenti/edit?id=@x.Id">Edit</a>
+            </td>
+        </tr>
+    }
+
+    </tbody>
+</table>
+
+<a href="/studenti/dodaj">Dodaj novog studenta</a>

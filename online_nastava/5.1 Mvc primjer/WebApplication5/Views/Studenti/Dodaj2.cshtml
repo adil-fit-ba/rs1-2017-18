@@ -1,0 +1,36 @@
+
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<h2>Dodaj</h2>
+
+@model WebApplication5.model.Student
+
+<form asp-controller="Studenti" asp-action="Snimi2" method="post">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-10">
+                    @Html.TextBoxFor(x => x.Ime, null, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-10">
+                    <input asp-for="Prezime" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-2">
+                    <input type="submit" value="Log in" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
+</form>

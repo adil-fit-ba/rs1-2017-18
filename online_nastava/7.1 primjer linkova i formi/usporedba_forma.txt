@@ -1,0 +1,21 @@
+@* html classic *@
+<form action="/Studenti/Snimi" method="get"  class="nekaCssKlasa" >
+    <input type="text" name="ime" placeholder="ime" class="form-control" value="Adil" />
+    <input type="text" name="prezime" placeholder="prezime" class="form-control" value="Joldić" />
+    <input type="submit" class="btn btn-primary" value="Snimi" />
+</form>
+
+@* mvc html helper *@
+@using (Html.BeginForm("Snimi", "Studenti", FormMethod.Get, new { @class = "nekaCssKlasa" }))
+{
+    @Html.TextBox("ime", "Adil", new { @class = "form-control"})
+    @Html.TextBox("prezime", "Joldić", new { @class = "form-control" })
+    <input type="submit" class="btn btn-primary" value="Snimi" />
+}
+
+@* mvc tag helper *@
+<form asp-action="Snimi" asp-controller="Studenti" method="get" class="nekaCssKlasa">
+    <input type="text" name="ime" placeholder="ime" class="form-control" value="Adil" />
+    <input type="text" name="prezime" placeholder="prezime" class="form-control" />
+    <input type="submit" class="btn btn-primary" value="Snimi" />
+</form>
