@@ -1,0 +1,58 @@
+﻿@using Ispit.Web.ViewModels
+
+@{
+    ViewData["Title"] = "Dodaj";
+    OdjeljenjeDodajVM ulazniModel= ViewData["ulazniModel"] as OdjeljenjeDodajVM;
+}
+
+<h2>Dodaj</h2>
+
+
+<form action="/Odjeljenje/Snimi">
+    <div class="form-group">
+        <label>Školska godina: </label>
+        <div>
+            <input type="text" name="skolaGodina"  class="form-control"/>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>Razred: </label>
+        <div>
+            <input type="text" name="razred"  class="form-control"/>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>Oznaka: </label>
+        <div>
+            <input type="text" name="oznaka"  class="form-control"/>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>Razrednik: </label>
+        <div>
+            <select  name="razrednikID"  class="form-control">
+                @foreach (var x in ulazniModel.nastavnici)
+                {
+                    <option value="@x.Value">@x.Text</option>
+                }
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>Niže odjeljenje: </label>
+        <div>
+            <select  name="odjeljenjeID"  class="form-control">
+                @foreach (var x in ulazniModel.odjeljenja)
+                {
+                    <option value="@x.Value">@x.Text</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <input type="submit" value="Snimi"/>
+</form>

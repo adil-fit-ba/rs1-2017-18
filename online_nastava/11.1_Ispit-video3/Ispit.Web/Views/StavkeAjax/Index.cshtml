@@ -1,0 +1,38 @@
+﻿@using Microsoft.VisualStudio.Web.CodeGeneration
+
+@model Ispit.Web.ViewModels.StavkeIndexVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Broj u dnevniku</th>
+        <th>Ucenik</th>
+        <th>Broj zakljucihOcjena</th>
+        <th>Akcija</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var x in Model.rows)
+    {
+        <tr>
+            <td>@x.BrojUDnevniku</td>
+            <td>@x.Ucenik</td>
+            <td>@x.BrojZakljucihOcjena</td>
+            <td>
+                <a  class="btn btn-danger" ajax-poziv="da" ajax-rezultat="nekiID" asp-action="Obrisi" asp-route-id="@x.OdjeljenjeStavkeId">Obrisi</a>
+                <a  class="btn btn-warning" ajax-poziv="da" ajax-rezultat="nekiID" asp-action="Uredi" asp-route-id="@x.OdjeljenjeStavkeId">Uredi</a>
+           
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@*<a href="/StavkeAjax/Dodaj" class="btn btn-danger">Dodaj</a>*@
+
+<a class="btn btn-danger" ajax-poziv="da" ajax-rezultat="nekiID" asp-action="Dodaj" asp-route-odjeljenjeId="@Model.OdjeljenjeId">Dodaj</a>

@@ -1,0 +1,45 @@
+﻿@using Ispit.Web.ViewModels
+@using Ispit_2017_09_11_DotnetCore.EntityModels
+
+@{
+    ViewData["Title"] = "ImeViewa";
+    OdjeljenjeIndexVM ulazniModel = (OdjeljenjeIndexVM) ViewData["ulazniModel"] ;
+}
+
+
+<h2>Index</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Skolska godina</th>
+            <th>Razred(od 1 do 4)</th>
+            <th>Oznaka</th>
+            <th>Razrednik</th>
+            <th>Prebaceni u visi razred(odjeljenje)</th>
+            <th>Prosjek ocjena</th>
+            <th>Najbolji učenik</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in ulazniModel.rows)
+        {
+            <tr>
+                <td>@x.SkolskaGodina</td>
+                <td>@x.Razred</td>
+                <td>@x.Oznaka</td>
+                <td>@x.Razrednik</td>
+                <td>@(x.IsPrebacenuViseOdjeljenje?"DA":"NE")</td>
+                <td>@x.prosjekOcjena.ToString($"F{2}")</td>
+                <td>@x.najboljiUcenik</td>
+                <td>
+                    <a href="/Odjeljenje/Detalji" class="btn btn-primary">Detalji</a>
+                    <a href="/Odjeljenje/Obrisi?id=@x.OdjeljenjeId" class="btn btn-danger">Obrisi</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>
+
+    <a href="/Odjeljenje/Dodaj" class="btn btn-success">Dodaj</a>

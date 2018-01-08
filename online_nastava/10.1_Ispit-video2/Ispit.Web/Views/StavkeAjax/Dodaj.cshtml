@@ -1,0 +1,36 @@
+﻿@model Ispit.Web.ViewModels.StavkeDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<h2>Dodaj novog učenika</h2>
+
+<form action="/StavkeAjax/Snimi" ajax-rezultat="nekiID" ajax-poziv="da">
+    <input type="hidden" value="@Model.OdjeljenjeID" name="OdjeljenjeID" />
+    <input type="hidden" value="@Model.OdjeljenjeStavkaId" name="OdjeljenjeStavkaId" />
+    <input type="text" value="@Model.BrojUdnevniku" name="BrojUdnevniku" />
+    <br />
+    <select name="UcenikID">
+        <option>(Odaberite učenika)</option>
+        @foreach (SelectListItem x in Model.ucenici)
+        {
+            if (x.Value == Model.UcenikID.ToString())
+             {
+        <option value="@x.Value" selected>@x.Text</option>
+             }
+             else
+             {
+        <option value="@x.Value">@x.Text</option>
+             }
+            
+        }
+    </select>
+    <br />
+    <input id="submitButton" type="submit" value="Snimi" />
+</form>
+
+
+
+<script>
+     
+</script>

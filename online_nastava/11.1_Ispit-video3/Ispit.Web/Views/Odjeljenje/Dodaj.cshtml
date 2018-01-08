@@ -1,0 +1,73 @@
+﻿@using Ispit.Web.Helper
+@using Ispit.Web.ViewModels
+
+@model OdjeljenjeDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<h2>Dodaj</h2>
+
+<form asp-action="Snimi" asp-controller="Odjeljenje">
+    <div class="form-group">
+        <label>Školska godina: </label>
+        <div>
+           
+            @*<input type="text" name="skolaGodina" class="form-control"/>
+                @Html.TextBox("skolaGodina", Model.skolaGodina, new {@class="form-control"})*@
+            @*@Html.TextBoxFor(x => x.skolaGodina, new {@class = "form-control"})*@
+            <input asp-for="skolaGodina" class="form-control"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Razred: </label>
+        <div>
+            @*<input type="text" name="razred" class="form-control"/>
+                @Html.TextBox("razred", Model.razred, new {@class="form-control"})*@
+            @*@Html.TextBoxFor(x => x.razred, new { @class = "form-control" })*@
+            <input asp-for="razred" class="form-control"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Oznaka: </label>
+        <div>
+            @*<input type="text" name="oznaka" class="form-control" />
+                @Html.TextBox("oznaka", Model.oznaka, new {@class="form-control"})*@
+            @*@Html.TextBoxFor(x => x.oznaka, new { @class = "form-control" })*@
+            <input asp-for="oznaka" class="form-control"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Razrednik: </label>
+        <div>
+            @*@Html.DropDownList("razrednikID", Model.nastavnici, new {@class = "form-control"})*@
+            @Html.DropDownListFor(x => x.razrednikID, Model.nastavnici, new { @class = "form-control" })
+            @*@MyMvc.dropdown("razrednikID", Model.nastavnici, 0, "form-control")*@
+            <select asp-for="razrednikID" asp-items="@Model.nastavnici" class="form-control">
+                <option>(odaberite razrednika)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Niže odjeljenje: </label>
+        <div>
+            @*@Html.DropDownList("odjeljenjeID", Model.odjeljenja, new {@class = "form-control"})*@
+            @*@Html.DropDownListFor(x => x.odjeljenjeID, Model.odjeljenja, new { @class = "form-control" })*@
+            @*@Mvc.dropdown("odjeljenjeID", Model.odjeljenja, 0, "form-control")*@
+            <select asp-for="odjeljenjeID" asp-items="@Model.odjeljenja" class="form-control">
+                <option>(odaberite odjeljenje)</option>
+            </select>
+        </div>
+    </div>
+
+    <input type="submit" value="Snimi" />
+</form>
+
+
+       
+
+
