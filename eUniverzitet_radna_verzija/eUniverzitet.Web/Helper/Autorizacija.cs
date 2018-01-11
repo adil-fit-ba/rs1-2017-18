@@ -40,22 +40,11 @@ namespace eUniverzitet.Web.Helper
                 return;
             }
 
-            if (_uloga.Contains(KorisnickaUloga.Student) && k.Student != null)
+            if (_uloga.Contains(k.KorisnickaUloga))
                 return;
 
 
-            List<Zaposlenje> zaposlenja = Autentifikacija.getZaposlenjes(filterContext.HttpContext);
-
-            if (zaposlenja != null)
-            {
-                //provjera
-                foreach (KorisnickaUloga x in _uloga)
-                {
-                    if (zaposlenja.Any(z => z.KorisnickaUloga == x))
-                        return;
-                }
-            }
-
+         
             filterContext.Result = new UnauthorizedResult();
         }
 

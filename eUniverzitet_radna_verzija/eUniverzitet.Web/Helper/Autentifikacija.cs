@@ -15,7 +15,7 @@ namespace eUniverzitet.Web.Helper
     {
         private const string LogiraniKorisnik = "logirani_korisnik";
 
-        public static void PokreniNovuSesiju(Korisnik korisnik, HttpContext context, bool zapamtiPassword)
+        public static void PokreniNovuSesiju(Korisnik korisnik, HttpContext context)
         {
             context.Session.SetJson(LogiraniKorisnik, korisnik);
 

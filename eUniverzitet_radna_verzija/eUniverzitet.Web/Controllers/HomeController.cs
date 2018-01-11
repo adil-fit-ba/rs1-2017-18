@@ -13,22 +13,18 @@ namespace eUniverzitet.Web.Controllers
 {
     public class HomeController : Controller
     {
-        //public IActionResult Index()
-        //{
+        public IActionResult Index()
+        {
 
-        //    Korisnik k = Autentifikacija.GetLogiraniKorisnik(HttpContext);
+            Korisnik k = Autentifikacija.GetLogiraniKorisnik(HttpContext);
 
-        //    if (k == null)
-        //        return RedirectToAction("Logout", "Autentifikacija", new { area = "" });
+            if (k == null)
+                return RedirectToAction("Logout", "Autentifikacija", new { area = "" });
 
-        //    if (k.Zaposlenik != null)
-        //        return RedirectToAction("Index", "Home", new { area = "ModulZaposlenik" });
+          //  return RedirectToAction("Index", "Home", new { area = "ModulZaposlenik" });
+            return Redirect("/ModulZaposlenik/Home/Index");
 
-        //    if (k.Student != null)
-        //        return RedirectToAction("Index", "Home", new { area = "ModulStudenti" });
-
-        //    return RedirectToAction("Logout", "Autentifikacija", new { area = "" });
-        //}
+        }
 
     }
 }

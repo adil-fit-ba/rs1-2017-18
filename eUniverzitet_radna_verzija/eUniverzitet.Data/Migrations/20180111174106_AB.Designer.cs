@@ -13,9 +13,10 @@ using System;
 namespace eUniverzitet.Data.Migrations
 {
     [DbContext(typeof(MojContext))]
-    partial class MojContextModelSnapshot : ModelSnapshot
+    [Migration("20180111174106_AB")]
+    partial class AB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,7 +118,7 @@ namespace eUniverzitet.Data.Migrations
 
                     b.Property<string>("Ime");
 
-                    b.Property<int>("KorisnickaUloga");
+                    b.Property<int?>("KorisnickaUloga");
 
                     b.Property<string>("KorisnickoIme");
 

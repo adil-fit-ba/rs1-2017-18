@@ -6,8 +6,8 @@ namespace eUniverzitet.Data.Models
 {
     public enum KorisnickaUloga
     {
-        SuperAdministrator,
-        AdministratorInstitucije,
+        SuperAdministrator = 10,
+        AdministratorInstitucije = 11,
         Edukator,
         StudentskaSluzba,
         RadnikOpste,

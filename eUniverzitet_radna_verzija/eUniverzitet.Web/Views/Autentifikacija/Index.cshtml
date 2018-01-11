@@ -1,0 +1,17 @@
+﻿@model eUniverzitet.Web.ViewModels.LoginVM
+@{
+    ViewData["Title"] = "Login";
+    string poruka = (string) ViewData["poruka"];
+}
+
+@if (poruka != null)
+{
+    <div>@poruka</div>
+}
+<h2>Login</h2>
+
+<form asp-action="Login">
+    <input asp-for="username"/> <br/>
+    <input asp-for="password"/><br />
+    <input type="submit"/>
+</form>

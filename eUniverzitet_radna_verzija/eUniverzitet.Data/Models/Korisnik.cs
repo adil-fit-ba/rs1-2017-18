@@ -9,23 +9,19 @@ namespace eUniverzitet.Data.Models
         public string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }
 
+        public KorisnickaUloga KorisnickaUloga { get; set; }
+
         public List<Student> Students { get; set; }
 
         public Student Student
         {
-            get
-            {
-                return Students.FirstOrDefault();
-            }
+            get { return null; }
         }
 
         public List<Zaposlenik> Zaposleniks { get; set; }
         public Zaposlenik Zaposlenik
         {
-            get
-            {
-                return Zaposleniks.FirstOrDefault();
-            }
+            get { return null; }
         }
 
         public string Ime { get; set; }
