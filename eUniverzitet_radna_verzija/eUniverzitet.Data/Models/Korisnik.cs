@@ -13,16 +13,10 @@ namespace eUniverzitet.Data.Models
 
         public List<Student> Students { get; set; }
 
-        public Student Student
-        {
-            get { return null; }
-        }
+       
 
         public List<Zaposlenik> Zaposleniks { get; set; }
-        public Zaposlenik Zaposlenik
-        {
-            get { return null; }
-        }
+       
 
         public string Ime { get; set; }
         public string Prezime { get; set; }
