@@ -1,0 +1,21 @@
+﻿@model WebApplication2.ViewModels.OcjeneVM
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Ocjena</th>
+            <th>Opis</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.rows)
+        {
+            <tr>
+                <td>@x.datum.ToString("dd/MM/yyyy")</td>
+                <td>@x.Ocjena</td>
+                <td>@x.OcjenaOpis</td>
+            </tr>
+        }
+    </tbody>
+</table>

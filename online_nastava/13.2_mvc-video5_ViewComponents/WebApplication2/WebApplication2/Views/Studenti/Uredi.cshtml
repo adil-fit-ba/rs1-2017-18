@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model WebApplication2.ViewModels.StudentiUrediVM
+<form action="/Studenti/Snimi" method="post">
+    <div  class="form-group">
+        <label>Broj indexa</label>
+        <input type="text" name="StudentId" class="form-control" placeholder="brIndexa" value="@Model.edit.SudentID" readonly />
+    </div>
+
+    <div class="form-group">
+        <label>Broj indexa</label>
+        <input type="text" name="brIndexa" class="form-control" placeholder="brIndexa" value="@Model.edit.Index" />
+    </div>
+    <div class="form-group">
+        <label>Ime</label>
+        <input type="text" name="ime" class="form-control" placeholder="Ime" value="@Model.edit.Ime"/>
+    </div>
+
+    <div class="form-group">
+        <label>Prezime</label>
+        <input type="text" name="prezime" class="form-control" placeholder="Prezime" value="@Model.edit.Prezime" />
+    </div>
+   
+    <div class="form-group">
+        <label>Grad</label>
+        <select type="text" name="GradID" class="form-control" >
+            @foreach (var item in Model.gradovi) {
+                if (Model.edit.GradID == item.GradID) {
+                    <option value="@item.GradID" selected="selected">@item.Naziv</option>
+                }
+                else
+                {
+                    <option value="@item.GradID">@item.Naziv</option>
+                }
+            }</select>
+    </div>
+    <div class="form-group">
+        <label></label>
+        <input type="submit" class="form-control" value="Snimi" />
+    </div>
+</form>
+
+@*@Html.Partial("OcjenePartial",Model.ocjene)*@
+
+
+<vc:Ocjene
+    studentId="@Model.edit.SudentID">
+</vc:Ocjene>

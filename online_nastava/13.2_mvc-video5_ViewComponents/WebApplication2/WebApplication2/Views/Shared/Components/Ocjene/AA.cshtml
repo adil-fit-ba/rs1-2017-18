@@ -1,0 +1,35 @@
+﻿@model WebApplication2.ViewModels.OcjeneVM
+@{ 
+    int brojac = 1;
+
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Redni broj</th>
+            <th>Datum</th>
+            <th>Ocjena</th>
+            <th>Napomena</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.Rows)
+        {
+            <tr>
+                <td>
+                    @(brojac++)
+                </td>
+                <td>
+                   @x.datum
+                </td>
+                <td>
+                    @x.ocjena
+                </td>
+                <td>
+                    @x.napomena
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

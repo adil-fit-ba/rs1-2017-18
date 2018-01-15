@@ -1,0 +1,58 @@
+
+@{
+    int i = 0;
+}
+@model WebApplication2.ViewModels.StudentiImeVM
+<h2>Index</h2>
+
+
+<form action="" method="get">
+    <input type="text" name="unos" value="@Model.Unos" />
+    <input type="submit" value="traži" />
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Rb</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Broj indeksa</th>
+            <th>Grad</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (WebApplication2.Models.Student x in Model.Studenti)
+       {
+        <tr>
+            <td>@(i++)</td>
+            <td>@x.Ime</td>
+            <td>@x.Prezime</td>
+            <td>@x.Index</td>
+            <td>
+                @if (x.Grad != null)
+                {
+                    <label>@x.Grad.Naziv</label>
+                }
+                else
+                {
+                    <label>Nema grada</label>
+                }
+            </td>
+            <td>
+              <a href="/Studenti/Obrisi?id=@x.SudentID">Obrisi</a>
+              <a href="/Studenti/Uredi?id=@x.SudentID">Update</a>
+            </td>
+
+
+           
+        </tr>
+       }
+    </tbody>
+</table>
+
+<a href="/Studenti/Dodaj">
+    Dodaj novog studenta
+</a>
+
