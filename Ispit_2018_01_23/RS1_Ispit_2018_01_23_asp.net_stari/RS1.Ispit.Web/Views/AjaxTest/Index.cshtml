@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ovo je index.cshtml</h2>
+
+<label>Pozovi AjaxTestAction i rezultat smjesti u testAjaxDiv</label>
+@Ajax.ActionLink("Pokreni", "AjaxTestAction", new { }, new AjaxOptions { UpdateTargetId = "testAjaxDiv" }, new { @class = "btn btn-primary" })
+
+
+<div style="border: solid; border-color:black">
+    <div id="testAjaxDiv">
+        Ovo je testAjaxDiv
+    </div>
+
+</div>
+@Html.ActionLink("Back", "Index", "Home")
