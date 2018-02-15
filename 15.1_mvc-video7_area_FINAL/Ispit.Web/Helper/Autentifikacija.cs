@@ -24,10 +24,21 @@ namespace eUniverzitet.Web.Helper
 
             MyContext db = context.RequestServices.GetService<MyContext>();
 
-            string stariToken = context.Request.GetCookieJson<string>(LogiraniKorisnik);
-            if (stariToken != null)
+            string stariToken1 = context.Request.GetCookieJson<string>(LogiraniKorisnik);
+            if (stariToken1 != null)
             {
-                AutorizacijskiToken obrisati = db.AutorizacijskiToken.FirstOrDefault(x => x.Vrijednost == stariToken);
+                AutorizacijskiToken obrisati = db.AutorizacijskiToken.FirstOrDefault(x => x.Vrijednost == stariToken1);
+                if (obrisati != null)
+                {
+                    db.AutorizacijskiToken.Remove(obrisati);
+                    db.SaveChanges();
+                }
+            }
+
+            string stariToken2 = context.Session.Get<string>(LogiraniKorisnik);
+            if (stariToken2 != null)
+            {
+                AutorizacijskiToken obrisati = db.AutorizacijskiToken.FirstOrDefault(x => x.Vrijednost == stariToken2);
                 if (obrisati != null)
                 {
                     db.AutorizacijskiToken.Remove(obrisati);
@@ -46,20 +57,26 @@ namespace eUniverzitet.Web.Helper
                     VrijemeEvidentiranja = DateTime.Now
                 });
                 db.SaveChanges();
-                context.Response.SetCookieJson(LogiraniKorisnik, token);
+                context.Session.Set(LogiraniKorisnik, token);
+                if (snimiUCookie)
+                    context.Response.SetCookieJson(LogiraniKorisnik, token);
             }
         }
 
         public static string GetTrenutniToken(this HttpContext context)
         {
-            return context.Request.GetCookieJson<string>(LogiraniKorisnik);
+            string token = context.Session.Get<string>(LogiraniKorisnik);
+            if (token == null)
+                token =  context.Request.GetCookieJson<string>(LogiraniKorisnik);
+
+            return token;
         }
 
         public static KorisnickiNalog GetLogiraniKorisnik(this HttpContext context)
         {
             MyContext db = context.RequestServices.GetService<MyContext>();
 
-            string token = context.Request.GetCookieJson<string>(LogiraniKorisnik);
+            string token = GetTrenutniToken(context);
             if (token == null)
                 return null;
 

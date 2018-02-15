@@ -23,8 +23,11 @@ namespace Ispit.Web.Controllers
 
         public IActionResult Index()
         {
+            var kId = HttpContext.GetLogiraniKorisnik().Id;
             SesijaIndexVM model = new SesijaIndexVM();
-            model.Rows = _db.AutorizacijskiToken.Select(s => new SesijaIndexVM.Row
+            model.Rows = _db.AutorizacijskiToken
+                .Where(x=>x.KorisnickiNalogId == kId)
+                .Select(s => new SesijaIndexVM.Row
             {
                 VrijemeLogiranja = s.VrijemeEvidentiranja,
                 token = s.Vrijednost,
