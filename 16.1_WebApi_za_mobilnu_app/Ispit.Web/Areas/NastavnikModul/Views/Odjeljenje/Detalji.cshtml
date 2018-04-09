@@ -1,0 +1,62 @@
+﻿
+@using Microsoft.AspNetCore.Rewrite.Internal
+@model Ispit.Web.ViewModels.OdjeljenjeDetaljiVM
+@{
+    ViewData["Title"] = "Detalji";
+}
+
+
+<h2>Detalji</h2>
+
+<div>
+    <div class="form-group">
+        <label>Školska godina: </label>
+        <div>
+            <input type="text" class="form-control" readonly value="@Model.SkolskaGodina" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Razred: </label>
+        <div>
+            <input type="text" class="form-control" readonly value="@Model.Razred" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Oznaka: </label>
+        <div>
+            <input type="text" class="form-control" readonly value="@Model.Oznaka" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Razrednik: </label>
+        <div>
+            <input type="text" class="form-control" readonly value="@Model.Razrednik" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>BrojUcenika: </label>
+        <div>
+            <input type="text" class="form-control" readonly value="@Model.BrojUcenika" />
+        </div>
+    </div>
+
+
+</div>
+
+<div id="nekiID" style="border: 1px black solid"></div>
+
+<script>
+    $(document).ready(function(parameters) {
+        $.get( "/NastavnikModul/StavkeAjax/index?odjeljenjeId=@Model.OdjeljenjeID",
+            function(rezultat, status) {
+                $("#nekiID").html(rezultat);
+              
+            });
+    });
+
+
+</script>

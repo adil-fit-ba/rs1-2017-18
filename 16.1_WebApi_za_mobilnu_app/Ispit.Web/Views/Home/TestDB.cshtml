@@ -1,0 +1,16 @@
+﻿@model Ispit.Data.MyContext
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Test DB - row count</h2>
+
+Ucenik: @Model.Ucenik.Count() <br/>
+Odjeljenje: @Model.Odjeljenje.Count() <br/>
+Predmet: @Model.Predmet.Count() <br/>
+Nastavnik: @Model.Nastavnik.Count() <br/>
+
+
+@Html.ActionLink("Back", "Index")

@@ -1,0 +1,37 @@
+﻿@using eUniverzitet.Web.Helper
+@using Ispit.Web.Helper
+@model Ispit.Web.ViewModels.SesijaIndexVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Aktivne sesije za korisnika @Context.GetLogiraniKorisnik().KorisnickoIme</h2>
+
+
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Vrijeme</th>
+        <th>Ip adresa</th>
+        <th>Akcija</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var x in Model.Rows)
+    {
+        <tr>
+            <td>@x.VrijemeLogiranja
+            @if (x.token == Model.TrenutniToken)
+            {
+                <strong>(trenutna sesija)</strong>
+            }
+            </td>
+            <td>@x.IpAdresa</td>
+            <td>
+                <a asp-action="Obrisi" asp-route-token="@x.token" class="btn btn-danger">Obrisi</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

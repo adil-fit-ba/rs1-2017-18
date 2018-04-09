@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h2>Home/Index</h2>
+<h2>Dobro došli</h2>
+
+
+<br />
+@Html.ActionLink("Ajax text", "Index", "AjaxTest")
+<br />
+@Html.ActionLink("DB text", "TestDB", "Home")   << -- Prije nego što kliknete prepravite Connection string. Upišite vaš broj indeksa u naziv DB-a.
+<br />
+@Html.ActionLink("OdjeljenjaController/Index", "Index", "Odjeljenje", new {Area = "NastavnikModul"})  << -- Potrebno implementirati!
+
+<a asp-area="NastavnikModul" asp-controller="Odjeljenje" asp-action="Index">OdjeljenjaController/Index</a>
