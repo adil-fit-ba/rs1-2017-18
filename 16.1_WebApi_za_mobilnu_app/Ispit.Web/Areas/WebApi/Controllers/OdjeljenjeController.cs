@@ -7,6 +7,7 @@ using Ispit.Web.Areas.WebApi.ViewModels;
 using Ispit.Web.Helper;
 using Ispit_2017_09_11_DotnetCore.EntityModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 
 namespace Ispit.Web.Areas.WebApi.Controllers
 {
@@ -27,20 +28,20 @@ namespace Ispit.Web.Areas.WebApi.Controllers
 
         public ApiResult<OdjeljenjeIndexVM> Index(int? razred)
         {
-            if (new Random().Next(4)==0)
-                return ApiResult<OdjeljenjeIndexVM>.Error(12345, "Greška. Metodom slučajnog odabira ne možete pristupiti sistemu.");
+            //if (new Random().Next(4)==0)
+            //    return ApiResult<OdjeljenjeIndexVM>.Error(12345, "Greška. Metodom slučajnog odabira ne možete pristupiti sistemu.");
 
 
             var model = new OdjeljenjeIndexVM
             {
                 rows = _context.Odjeljenje.Select(x => new OdjeljenjeIndexVM.Row
                 {
-                    OdeljenjeId = x.Id,
-                    SkolskaGodina = x.SkolskaGodina,
-                    Razrednik = x.Razrednik.ImePrezime,
-                    Oznaka = x.Oznaka,
-                    Razred = x.Razred,
-                    RazrednikID = x.RazrednikID
+                    odeljenjeId = x.Id,
+                    skolskaGodina = x.SkolskaGodina,
+                    razrednik = x.Razrednik.ImePrezime,
+                    oznaka = x.Oznaka,
+                    razred = x.Razred,
+                    razrednikID = x.RazrednikID
                 }).ToList()
             };
 
@@ -61,18 +62,18 @@ namespace Ispit.Web.Areas.WebApi.Controllers
 
             return ApiResult<OdjeljenjeNastavniciVM>.OK(model);
         }
-        public ApiResult<int> Save(OdjeljenjeSaveVM input)
+        public ApiResult<int> Save([FromBody] OdjeljenjeSaveVM input)
         {
             if (new Random().Next(4) == 0)
                 return ApiResult<int>.Error(12345, "Greška. Metodom slučajnog odabira ne možete pristupiti sistemu.");
 
-
+          
             _context.Odjeljenje.Add(new Odjeljenje
             {
-                Oznaka = input.Oznaka,
+                Oznaka = input.oznaka,
                 IsPrebacenuViseOdjeljenje = false,
-                SkolskaGodina = input.SkolskaGodina,
-                RazrednikID = input.RazrednikID
+                SkolskaGodina = input.skolskaGodina,
+                RazrednikID = input.razrednikID
             });
 
             _context.SaveChanges();

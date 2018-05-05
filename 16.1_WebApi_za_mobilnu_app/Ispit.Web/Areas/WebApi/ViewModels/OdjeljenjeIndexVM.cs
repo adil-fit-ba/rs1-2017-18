@@ -11,12 +11,12 @@ namespace Ispit.Web.Areas.WebApi.ViewModels
 
         public class Row
         {
-            public int OdeljenjeId { get; set; }
-            public string SkolskaGodina { get; set; }
-            public string Razrednik { get; set; }
-            public string Oznaka { get; set; }
-            public int Razred { get; set; }
-            public int? RazrednikID { get; set; }
+            public int odeljenjeId { get; set; }
+            public string skolskaGodina { get; set; }
+            public string razrednik { get; set; }
+            public string oznaka { get; set; }
+            public int razred { get; set; }
+            public int? razrednikID { get; set; }
         }
     }
  
