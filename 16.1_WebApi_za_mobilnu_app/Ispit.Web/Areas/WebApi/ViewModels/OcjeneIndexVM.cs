@@ -16,6 +16,7 @@ namespace Ispit.Web.Areas.WebApi.ViewModels
             public string Razrednik { get; set; }
             public string Oznaka { get; set; }
             public int Razred { get; set; }
+            public int? RazrednikID { get; set; }
         }
     }
  
