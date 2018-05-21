@@ -22,5 +22,15 @@ namespace Ispit.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult Gps2()
+        {
+            return View();
+        }
+
+        public IActionResult Camera2()
+        {
+            return View();
+        }
     }
 }
