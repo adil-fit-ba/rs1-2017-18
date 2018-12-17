@@ -17,4 +17,9 @@
     <None Include="Views\Home\Index.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\Odjeljenje\" />
+  </ItemGroup>
+
 </Project>
